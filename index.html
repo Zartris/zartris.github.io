@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jonas le Fevre Sejersen — Robotics · AI · Multi-Agent Systems</title>
+  <meta name="description" content="PhD in multi-agent robotics. Building autonomous systems from equations to 1,000-robot fleets — hardware, sensor fusion, and everything in between.">
+  <meta property="og:title" content="Jonas le Fevre Sejersen">
+  <meta property="og:description" content="PhD in Multi-Agent Robotics. Full-stack autonomous systems engineer.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <!-- Custom Cursor -->
+  <div id="cursor-dot"></div>
+  <div id="cursor-ring"></div>
+
+  <!-- ─── NAV ─── -->
+  <nav id="nav">
+    <a href="#hero" class="nav-logo">JlFS</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#expertise">Expertise</a></li>
+      <li><a href="#research">Research</a></li>
+      <li><a href="#dataset">Simulation</a></li>
+      <li><a href="#publications">Publications</a></li>
+    </ul>
+    <a href="#contact" class="nav-cta">Contact</a>
+  </nav>
+
+  <!-- ─── HERO ─── -->
+  <section id="hero">
+    <canvas id="agentCanvas"></canvas>
+    <div class="hero-radial"></div>
+    <div class="hero-grid"></div>
+    <div class="hero-content">
+      <p class="hero-pre">PhD · Multi-Agent Robotics · Aarhus University</p>
+      <h1 class="hero-name">
+        Jonas<br>le Fevre<br><span>Sejersen</span>
+      </h1>
+      <p class="hero-tagline">
+        Teaching robots to cooperate — without ever talking to each other.
+        From equations to 1,000-robot fleets.
+      </p>
+      <div class="hero-actions">
+        <a href="#research" class="btn-primary">View Research</a>
+        <a href="https://github.com/zartris" class="btn-ghost" target="_blank">GitHub ↗</a>
+      </div>
+    </div>
+    <div class="scroll-cue">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ─── ABOUT ─── -->
+  <section id="about">
+    <div class="section-inner">
+      <div class="about-grid">
+        <div class="about-text reveal">
+          <p class="section-label">About</p>
+          <h2>Building the future of autonomous coordination</h2>
+          <p style="margin-top:24px;">
+            I am a <strong>robotics researcher and engineer</strong> with a PhD from Aarhus University's
+            AI in Robotics Lab (AIR Lab), where I spent three years solving one of the core challenges
+            in autonomous systems: how do you get large groups of robots to work together — intelligently,
+            reliably, and <em>without communicating</em>?
+          </p>
+          <p>
+            My PhD produced four research contributions spanning
+            <strong>graph neural networks</strong>, <strong>Gaussian belief propagation</strong>,
+            and <strong>multi-agent reinforcement learning</strong> — all published or submitted to
+            IROS and ICRA, the top conferences in robotics.
+          </p>
+          <p>
+            Beyond academia, I engineer <strong>complete autonomous systems</strong> end-to-end:
+            from custom embedded hardware and firmware, through sensor integration and real-time
+            fusion pipelines, to the software stack that coordinates fleets of
+            <strong>over 1,000 robots</strong> in live production environments.
+          </p>
+          <span class="highlight-line">
+            "Theory that ships. Research that scales."
+          </span>
+        </div>
+        <div class="about-meta reveal reveal-delay-2">
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-num">8+</div>
+              <div class="stat-label">Publications</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-num">1K+</div>
+              <div class="stat-label">Robots in Fleet</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-num">4</div>
+              <div class="stat-label">Research Pillars</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-num">3</div>
+              <div class="stat-label">Years of PhD</div>
+            </div>
+          </div>
+          <div class="about-links">
+            <a href="https://github.com/zartris" class="link-chip" target="_blank">GitHub ↗</a>
+            <a href="https://linkedin.com/in/[your-linkedin]" class="link-chip" target="_blank">LinkedIn ↗</a>
+            <a href="mailto:jonas.le.fevre@ece.au.dk" class="link-chip">Email ↗</a>
+            <a href="https://scholar.google.com/citations?user=v8-1JZcAAAAJ" class="link-chip" target="_blank">Scholar ↗</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── EXPERTISE ─── -->
+  <section id="expertise">
+    <div class="section-inner">
+      <div class="expertise-header reveal">
+        <p class="section-label">Expertise</p>
+        <h2>Full-stack autonomy</h2>
+        <p class="section-desc">From the equations to the warehouse floor — I work at every layer of the robotics stack.</p>
+      </div>
+      <div class="skills-grid">
+        <div class="skill-card reveal reveal-delay-1">
+          <span class="skill-icon">⬡</span>
+          <div class="skill-title">Multi-Agent Path Planning</div>
+          <p class="skill-desc">Coordinating large fleets of agents in dynamic environments. Conflict-aware prediction, scalable algorithms, real-world robustness.</p>
+          <div class="skill-tags">
+            <span class="skill-tag">MAPF</span>
+            <span class="skill-tag">Graph Neural Networks</span>
+            <span class="skill-tag">ETA Prediction</span>
+            <span class="skill-tag">Fleet Control</span>
+          </div>
+        </div>
+        <div class="skill-card reveal reveal-delay-2">
+          <span class="skill-icon">↗</span>
+          <div class="skill-title">Motion Planning & Control</div>
+          <p class="skill-desc">Local and global planning for real-time robot navigation. Probabilistic inference, learned policies, collision avoidance at scale.</p>
+          <div class="skill-tags">
+            <span class="skill-tag">ORCA</span>
+            <span class="skill-tag">Gaussian Belief Propagation</span>
+            <span class="skill-tag">MARL</span>
+            <span class="skill-tag">MPC</span>
+          </div>
+        </div>
+        <div class="skill-card reveal reveal-delay-3">
+          <span class="skill-icon">◈</span>
+          <div class="skill-title">Simulation Engineering</div>
+          <p class="skill-desc">Building photorealistic simulation environments and robot models for research and training. Used by labs worldwide.</p>
+          <div class="skill-tags">
+            <span class="skill-tag">Unreal Engine 5</span>
+            <span class="skill-tag">ROS2</span>
+            <span class="skill-tag">AirSim</span>
+            <span class="skill-tag">Docker</span>
+          </div>
+        </div>
+        <div class="skill-card reveal reveal-delay-1">
+          <span class="skill-icon">⊕</span>
+          <div class="skill-title">Sensor Fusion & State Estimation</div>
+          <p class="skill-desc">Fusing multi-modal sensor data for robust real-time state estimation. Probabilistic filters, LiDAR, IMU, and camera pipelines.</p>
+          <div class="skill-tags">
+            <span class="skill-tag">Kalman Filters</span>
+            <span class="skill-tag">LiDAR</span>
+            <span class="skill-tag">IMU</span>
+            <span class="skill-tag">SLAM</span>
+          </div>
+        </div>
+        <div class="skill-card reveal reveal-delay-2">
+          <span class="skill-icon">⚙</span>
+          <div class="skill-title">Embedded Systems & Hardware</div>
+          <p class="skill-desc">From bare-metal firmware to robot hardware integration. Designing and deploying custom systems for real production environments.</p>
+          <div class="skill-tags">
+            <span class="skill-tag">STM32</span>
+            <span class="skill-tag">ESP32</span>
+            <span class="skill-tag">PX4</span>
+            <span class="skill-tag">C++</span>
+          </div>
+        </div>
+        <div class="skill-card reveal reveal-delay-3">
+          <span class="skill-icon">◉</span>
+          <div class="skill-title">Machine Learning & Deep Learning</div>
+          <p class="skill-desc">Graph neural networks, reinforcement learning, and computer vision. Research-grade models that deploy to real hardware.</p>
+          <div class="skill-tags">
+            <span class="skill-tag">GNN</span>
+            <span class="skill-tag">PyTorch</span>
+            <span class="skill-tag">MARL</span>
+            <span class="skill-tag">CNN</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── RESEARCH ─── -->
+  <section id="research">
+    <div class="section-inner">
+      <div class="research-header reveal">
+        <p class="section-label">Research</p>
+        <h2>Four contributions.<br>One unified vision.</h2>
+        <p class="section-desc">My PhD produced four interconnected research pillars — each addressing a fundamental gap in multi-agent coordination for real-world deployment.</p>
+      </div>
+    </div>
+
+    <div class="section-inner" style="padding-top:0;">
+      <div class="papers">
+
+        <!-- GIANT -->
+        <article class="paper reveal">
+          <div class="paper-text">
+            <div class="paper-num">01 — newest</div>
+            <div class="paper-venue">
+              <span class="venue-badge">IROS 2025</span>
+              <span class="status-badge">Published · 1st Author</span>
+            </div>
+            <span class="paper-acronym"><span>G</span>IANT</span>
+            <p class="paper-full-title">Global Path Integration and Attentive Graph Networks for Multi-Agent Trajectory Planning</p>
+            <p class="paper-desc">
+              Robots that navigate complex, crowded environments without <em>ever</em> communicating with each other.
+              GIANT uses an attentive graph neural network to process LiDAR detections of nearby agents,
+              fused with global path guidance — trained end-to-end with noise injection for real-world robustness.
+              Outperforms NH-ORCA, DRL-NAV, and GA3C-CADRL across all tested scenarios.
+            </p>
+            <div class="paper-tags">
+              <span class="tag">MARL</span>
+              <span class="tag">Attentive GNN</span>
+              <span class="tag">LiDAR Fusion</span>
+              <span class="tag">Decentralized</span>
+              <span class="tag">Communication-free</span>
+            </div>
+            <div class="paper-actions">
+              <a href="https://github.com/zartris/GIANT_MultiAgentRLCollisionAvoidance" class="btn-sm outline" target="_blank">Code ↗</a>
+            </div>
+          </div>
+          <div class="paper-visual">
+            <div class="giant-grid">
+              <video autoplay muted playsinline loop><source src="assets/media/giant/Circle_ours_2x.webm" type="video/webm"></video>
+              <video autoplay muted playsinline loop><source src="assets/media/giant/Hallway_ours_2x.webm" type="video/webm"></video>
+              <video autoplay muted playsinline loop><source src="assets/media/giant/Doorway_ours_2x.webm" type="video/webm"></video>
+              <video autoplay muted playsinline loop><source src="assets/media/giant/Random_ours_2x.webm" type="video/webm"></video>
+            </div>
+            <div class="giant-grid-labels">
+              <span>Circle</span><span>Hallway</span><span>Doorway</span><span>Random</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- MAGIC -->
+        <article class="paper flipped reveal">
+          <div class="paper-text">
+            <div class="paper-num">02</div>
+            <div class="paper-venue">
+              <span class="venue-badge">ICRA 2025</span>
+              <span class="status-badge">Published · Co-author (supervised)</span>
+            </div>
+            <span class="paper-acronym"><span>M</span>AGIC</span>
+            <p class="paper-full-title">Multi-Agent Path Planning in Complex Environments using Gaussian Belief Propagation with Global Path Finding</p>
+            <p class="paper-desc">
+              Gaussian Belief Propagation planners are smooth and distributed — but they drift from their
+              intended routes. MAGIC introduces a <em>tracking factor</em> into the GBP factor graph,
+              creating an explicit probabilistic link to the global path. Result: 28% less path deviation
+              and zero inter-robot collisions in structured environments. Secondly it introduces a GBP simulation framework 
+              highly customizable for research and education, with support for complex environments, heterogeneous agents, and real-time visualization.
+            </p>
+            <div class="paper-tags">
+              <span class="tag">Gaussian Belief Propagation</span>
+              <span class="tag">Factor Graphs</span>
+              <span class="tag">Global-Local Integration</span>
+              <span class="tag">Distributed Planning</span>
+            </div>
+            <div class="paper-actions">
+              <a href="https://github.com/AU-Master-Thesis/magics" class="btn-sm outline" target="_blank">Code ↗</a>
+            </div>
+          </div>
+          <div class="paper-visual">
+            <video class="magic-video" autoplay loop muted playsinline>
+              <source src="assets/media/magic/magics-functionality-demo.webm" type="video/webm">
+            </video>
+            <div class="paper-visual-caption">GBP multi-agent demo — junction navigation with global path tracking</div>
+          </div>
+        </article>
+
+        <!-- CAMETA -->
+        <article class="paper reveal">
+          <div class="paper-text">
+            <div class="paper-num">03</div>
+            <div class="paper-venue">
+              <span class="venue-badge">IROS 2023</span>
+              <span class="status-badge">Published · 1st Author</span>
+            </div>
+            <span class="paper-acronym"><span>C</span>AMETA</span>
+            <p class="paper-full-title">Conflict-Aware Multi-Agent Estimated Time of Arrival Prediction for Mobile Robots</p>
+            <p class="paper-desc">
+              When a path planner says a robot will arrive in 30 seconds, it's often wrong — because it ignores
+              how agents interact. CAMETA uses a heterogeneous graph neural network to predict when each agent
+              will actually arrive, accounting for conflicts and execution noise. 44% improvement in prediction
+              accuracy over naive baselines.
+            </p>
+            <div class="paper-tags">
+              <span class="tag">Heterogeneous GNN</span>
+              <span class="tag">ETA Prediction</span>
+              <span class="tag">MAPF</span>
+              <span class="tag">Fleet Scheduling</span>
+            </div>
+            <div class="paper-actions">
+              <!-- Add code repo link when available -->
+            </div>
+          </div>
+          <div class="paper-visual">
+            <img src="assets/media/cameta/Framework_Structure.png" alt="CAMETA framework" loading="lazy" style="object-fit:contain; background:#0c0d10; padding:24px;">
+            <div class="paper-visual-caption">CAMETA framework — heterogeneous GNN on map + agent graph</div>
+          </div>
+        </article>
+
+        <!-- Adaptive GBP -->
+        <article class="paper flipped reveal">
+          <div class="paper-text">
+            <div class="paper-num">04</div>
+            <div class="paper-venue">
+              <span class="venue-badge">Thesis Chapter</span>
+              <span class="status-badge">Pending Submission · 1st Author</span>
+            </div>
+            <span class="paper-acronym"><span>A</span>daptive<br>GBP</span>
+            <p class="paper-full-title">Adaptive Weight Tuning in Gaussian Belief Propagation via Graph Neural Networks</p>
+            <p class="paper-desc">
+              GBP planners are sensitive to manually-set parameters — variances that control how much weight
+              each factor gets. Adaptive GBP replaces this with a GNN that reads the robot's local
+              environment and adjusts parameters online: tighter collision avoidance in crowds, stronger
+              path tracking in open space. No manual tuning required.
+            </p>
+            <div class="paper-tags">
+              <span class="tag">Adaptive Control</span>
+              <span class="tag">GNN</span>
+              <span class="tag">Online Learning</span>
+              <span class="tag">GBP</span>
+            </div>
+            <div class="paper-actions">
+              <!-- Add links when paper is published -->
+            </div>
+          </div>
+          <div class="paper-visual agbp-visual">
+            <div class="agbp-videos">
+              <video autoplay muted playsinline loop><source src="assets/media/adaptiveGBP/Baseline_Doorway.webm" type="video/webm"></video>
+              <video autoplay muted playsinline loop><source src="assets/media/adaptiveGBP/doorway_adaptivegbp_with_plot.webm" type="video/webm"></video>
+            </div>
+            <div class="agbp-map">
+              <img src="assets/media/adaptiveGBP/AGBP_map.png" alt="Adaptive GBP parameter map">
+            </div>
+            <div class="paper-visual-caption">Baseline vs Adaptive GBP — doorway · parameter heat map</div>
+          </div>
+        </article>
+
+      </div><!-- /papers -->
+    </div>
+
+  </section>
+
+  <!-- ─── MIMIR DATASET ─── -->
+  <section id="dataset">
+    <div class="section-inner">
+      <div class="dataset-header reveal">
+        <p class="section-label">Simulation & Environments</p>
+        <h2>Built the underwater world</h2>
+        <p class="dataset-lead">
+          For the <strong>MIMIR-UW dataset</strong> — a synthetic benchmark for underwater robotics research —
+          I designed and built <strong>all simulation environments and robot models</strong> from scratch
+          in Unreal Engine. The dataset has been used by researchers worldwide for visual localization,
+          depth estimation, and semantic segmentation tasks.
+        </p>
+      </div>
+
+      <div class="gif-grid reveal">
+        <div class="gif-cell large">
+          <img src="assets/media/mimir/MIMIR-4envs.gif" alt="MIMIR four environments overview" loading="lazy">
+          <div class="gif-label">Four environments — Ocean Floor, Sand Pipe, Sea Floor, Algae</div>
+        </div>
+        <div class="gif-cell">
+          <img src="assets/media/mimir/MIMIR-cameras.gif" alt="MIMIR camera views" loading="lazy">
+          <div class="gif-label">Multi-camera rig</div>
+        </div>
+        <div class="gif-cell">
+          <img src="assets/media/mimir/MIMIR-oceanfloor.gif" alt="MIMIR ocean floor" loading="lazy">
+          <div class="gif-label">Ocean Floor env</div>
+        </div>
+        <div class="gif-cell">
+          <img src="assets/media/mimir/MIMIR-seafloor.gif" alt="MIMIR sea floor" loading="lazy">
+          <div class="gif-label">Sea Floor env</div>
+        </div>
+        <div class="gif-cell">
+          <img src="assets/media/mimir/MIMIR-seaflooralgae.gif" alt="MIMIR sea floor algae" loading="lazy">
+          <div class="gif-label">Algae env</div>
+        </div>
+      </div>
+
+      <a href="https://github.com/remaro-network/MIMIR-UW" class="dataset-link reveal" target="_blank">
+        <span>View MIMIR-UW on GitHub</span>
+        <span>→</span>
+      </a>
+
+      <div class="sim-stack reveal">
+        <p class="section-label">Robotics Simulation Stack</p>
+        <div class="sim-stack-grid">
+          <p>
+            I maintain an open-source Unreal Engine 5 robotics simulation stack used for research and
+            development of autonomous systems. The stack provides a complete bridge between UE5 and ROS2,
+            enabling photorealistic simulation of real robot platforms.
+          </p>
+          <div class="social-links-stack">
+            <a href="https://github.com/zartris/RapyutaSimulationPlugins" class="social-link spaced" target="_blank">
+              <span>RapyutaSimulationPlugins</span><span>↗</span>
+            </a>
+            <a href="https://github.com/zartris/rclUE" class="social-link spaced" target="_blank">
+              <span>rclUE — ROS2 ↔ UE5 Bridge</span><span>↗</span>
+            </a>
+            <a href="https://github.com/zartris/turtlebot3-UE" class="social-link spaced" target="_blank">
+              <span>TurtleBot3 in Unreal Engine</span><span>↗</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── PUBLICATIONS ─── -->
+  <section id="publications">
+    <div class="section-inner">
+      <div class="pub-header reveal">
+        <p class="section-label">Publications</p>
+        <h2>Research output</h2>
+      </div>
+
+      <div class="pub-group reveal">
+        <div class="pub-group-title">PhD Thesis — Core Contributions</div>
+
+        <div class="pub-item">
+          <div class="pub-year">2025</div>
+          <div>
+            <div class="pub-title">GIANT: Global Path Integration and Attentive Graph Networks for Multi-Agent Trajectory Planning</div>
+            <div class="pub-authors"><strong>J. le Fevre Sejersen</strong>, E. Kayacan</div>
+            <div class="pub-venue">IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS), Hangzhou, China</div>
+          </div>
+          <span class="pub-badge">Published</span>
+        </div>
+
+        <div class="pub-item">
+          <div class="pub-year">2025</div>
+          <div>
+            <div class="pub-title">Multi-Agent Path Planning in Complex Environments using Gaussian Belief Propagation with Global Path Finding</div>
+            <div class="pub-authors">J.H. Jensen, K.P.B. Sørensen, <strong>J. le Fevre Sejersen</strong>, A. Sarabakha</div>
+            <div class="pub-venue">IEEE International Conference on Robotics and Automation (ICRA), Atlanta, USA</div>
+          </div>
+          <span class="pub-badge">Published</span>
+        </div>
+
+        <div class="pub-item">
+          <div class="pub-year">2023</div>
+          <div>
+            <div class="pub-title">CAMETA: Conflict-Aware Multi-Agent Estimated Time of Arrival Prediction for Mobile Robots</div>
+            <div class="pub-authors"><strong>J. le Fevre Sejersen</strong>, E. Kayacan</div>
+            <div class="pub-venue">IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS), Detroit, MI, USA — pp. 9254–9261</div>
+          </div>
+          <span class="pub-badge">Published</span>
+        </div>
+      </div>
+
+      <div class="pub-group reveal">
+        <div class="pub-group-title">Additional Publications</div>
+
+        <div class="pub-item">
+          <div class="pub-year">2023</div>
+          <div>
+            <div class="pub-title">MIMIR-UW: A Multipurpose Synthetic Dataset for Underwater Navigation and Inspection</div>
+            <div class="pub-authors">O. Álvarez-Tuñón, H. Kanner, L. Ribeiro Marnet, H.X. Pham, <strong>J. le Fevre Sejersen</strong>, Y. Brodskiy, E. Kayacan</div>
+            <div class="pub-venue">IEEE/RSJ IROS 2023 — pp. 6141–6148</div>
+          </div>
+          <span class="pub-badge">Published</span>
+        </div>
+
+        <div class="pub-item">
+          <div class="pub-year">2023</div>
+          <div>
+            <div class="pub-title">Visual Tracking Nonlinear Model Predictive Control Method for Autonomous Wind Turbine Inspection</div>
+            <div class="pub-authors">A. Amer, M. Mehndiratta, <strong>J. le Fevre Sejersen</strong>, H.X. Pham, E. Kayacan</div>
+            <div class="pub-venue">IEEE International Conference on Advanced Robotics (ICAR) 2023 — pp. 431–438</div>
+          </div>
+          <span class="pub-badge">Published</span>
+        </div>
+
+        <div class="pub-item">
+          <div class="pub-year">2023</div>
+          <div>
+            <div class="pub-title">UNav-sim: A Visually Realistic Underwater Robotics Simulator and Synthetic Data-Generation Framework</div>
+            <div class="pub-authors">A. Amer, O. Álvarez-Tuñón, H.İ. Uğurlu, <strong>J. le Fevre Sejersen</strong>, Y. Brodskiy, E. Kayacan</div>
+            <div class="pub-venue">IEEE ICAR 2023 — pp. 570–576</div>
+          </div>
+          <span class="pub-badge">Published</span>
+        </div>
+
+        <div class="pub-item">
+          <div class="pub-year">2022</div>
+          <div>
+            <div class="pub-title">Integrated Design-Sense-Plan Architecture for Autonomous Geometric-Semantic Mapping with UAVs</div>
+            <div class="pub-authors">R. Pimentel de Figueiredo, <strong>J. le Fevre Sejersen</strong>, J. Grimm Hansen, M. Brandão</div>
+            <div class="pub-venue">Frontiers in Robotics and AI, Volume 9</div>
+          </div>
+          <span class="pub-badge">Journal</span>
+        </div>
+
+        <div class="pub-item">
+          <div class="pub-year">2022</div>
+          <div>
+            <div class="pub-title">Real-Time Method for Time-to-Collision Estimation from Aerial Images</div>
+            <div class="pub-authors">D. Tottrup, S. Lykke Skovgaard, <strong>J. le Fevre Sejersen</strong>, J. Grimm Hansen, R. Pimentel de Figueiredo</div>
+            <div class="pub-venue">Journal of Imaging, Volume 8</div>
+          </div>
+          <span class="pub-badge">Journal</span>
+        </div>
+
+        <div class="pub-item">
+          <div class="pub-year">2022</div>
+          <div>
+            <div class="pub-title">Deep Learning for Vision-Based Navigation in Autonomous Drone Racing</div>
+            <div class="pub-authors">H.X. Pham, H.I. Ugurlu, <strong>J. le Fevre Sejersen</strong>, D. Bardakci, E. Kayacan</div>
+            <div class="pub-venue">Deep Learning for Robot Perception and Cognition, Academic Press — pp. 371–406</div>
+          </div>
+          <span class="pub-badge">Book Chapter</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── CONTACT ─── -->
+  <footer id="contact">
+    <div class="contact-inner">
+      <div class="contact-top reveal">
+        <div>
+          <h2 class="contact-heading">Let's build<br><span>something real.</span></h2>
+          <p class="contact-sub">Open to research collaborations, industry positions, and conversations about autonomous systems.</p>
+        </div>
+        <a href="mailto:jonas.le.fevre@ece.au.dk" class="contact-email">jonas.le.fevre@ece.au.dk</a>
+      </div>
+      <div class="contact-links reveal">
+        <a href="https://github.com/zartris" class="social-link" target="_blank">
+          <span>⬡</span> GitHub
+        </a>
+        <a href="https://linkedin.com/in/[your-linkedin]" class="social-link" target="_blank">
+          <span>◈</span> LinkedIn
+        </a>
+        <a href="https://scholar.google.com/citations?user=v8-1JZcAAAAJ" class="social-link" target="_blank">
+          <span>◉</span> Google Scholar
+        </a>
+        <a href="mailto:jonas.le.fevre@ece.au.dk" class="social-link">
+          <span>→</span> Email
+        </a>
+      </div>
+      <div class="footer-bottom">
+        <span class="footer-copy">© 2025 Jonas le Fevre Sejersen · Aarhus University AIR Lab</span>
+        <div class="footer-status">
+          <div class="status-dot"></div>
+          <span>Available for opportunities</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Video Lightbox -->
+  <div id="videoModal" class="video-modal" aria-hidden="true">
+    <div class="modal-backdrop"></div>
+    <div class="modal-stage">
+      <div class="modal-topbar">
+        <span class="modal-caption-text" id="modalCaption"></span>
+        <button class="modal-close" id="modalClose" aria-label="Close">✕</button>
+      </div>
+      <video id="modalVideo" controls playsinline></video>
+      <img id="modalImg" alt="" style="display:none;">
+    </div>
+  </div>
+
+  <script src="js/simulation.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
