@@ -318,6 +318,14 @@ h2 {
   padding: 4px 8px; border: 1px solid var(--border);
   color: var(--text3);
 }
+.skill-papers { margin-top: 14px; display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+.skill-papers-label { font-family: var(--ff-mono); font-size: 9px; letter-spacing: .08em; text-transform: uppercase; color: var(--text3); margin-right: 2px; }
+.skill-paper-link {
+  font-family: var(--ff-mono); font-size: 9px; letter-spacing: .06em;
+  color: var(--accent); border-bottom: 1px solid transparent;
+  transition: border-color .2s;
+}
+.skill-paper-link:hover { border-color: var(--accent); }
 
 /* ─────────────────────────────────────────
    RESEARCH
@@ -527,12 +535,14 @@ h2 {
   background: var(--bg3); cursor: pointer;
 }
 .gif-cell.large { grid-row: span 2; }
-.gif-cell img {
+.gif-cell img,
+.gif-cell video {
   width: 100%; height: 100%; min-height: 200px;
   object-fit: cover; display: block;
   transition: transform .5s, opacity .3s;
 }
-.gif-cell:hover img { transform: scale(1.04); }
+.gif-cell:hover img,
+.gif-cell:hover video { transform: scale(1.04); }
 .gif-label {
   position: absolute; bottom: 0; left: 0; right: 0;
   padding: 12px 16px;
@@ -601,6 +611,8 @@ h2 {
   font-size: 15px; font-weight: 500; color: var(--text);
   margin-bottom: 6px; line-height: 1.45;
 }
+.pub-title a { color: inherit; border-bottom: 1px solid transparent; transition: color .2s, border-color .2s; }
+.pub-title a:hover { color: var(--accent); border-color: var(--accent); }
 .pub-authors { font-size: 13px; color: var(--text2); margin-bottom: 6px; }
 .pub-authors strong { color: var(--accent-dim); font-weight: 400; }
 .pub-venue {
