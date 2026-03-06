@@ -40,7 +40,7 @@ Demo.DemoAgent = class {
 
   _setWanderTarget() {
     const wz = Demo.waitingZone;
-    if (!wz || !wz.x) {
+    if (!wz || !wz.resolved) {
       // Fallback: waiting zone not resolved yet, wander freely
       this.tx = 60 + Math.random() * (this.W - 120);
       this.ty = 60 + Math.random() * (this.H - 120);

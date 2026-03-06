@@ -24,7 +24,7 @@ Demo.dropoffZones = [
 ];
 
 // Central standby area — idle robots congregate here
-Demo.waitingZone = { xf: 0.50, yf: 0.50, x: 0, y: 0, radius: 70 };
+Demo.waitingZone = { xf: 0.50, yf: 0.50, x: 0, y: 0, radius: 70, resolved: false };
 
 // Call after canvas resize to convert fractions to pixels
 Demo.resolveZonePositions = function (W, H) {
@@ -41,6 +41,7 @@ Demo.resolveZonePositions = function (W, H) {
   const wz = Demo.waitingZone;
   wz.x = wz.xf * W;
   wz.y = wz.yf * H;
+  wz.resolved = true;
 };
 
 Demo.drawZones = function (ctx) {
@@ -102,7 +103,7 @@ Demo.drawZones = function (ctx) {
 
 Demo.drawWaitingZone = function (ctx) {
   const wz = Demo.waitingZone;
-  if (!wz.x) return; // not yet resolved
+  if (!wz.resolved) return;
 
   ctx.save();
   ctx.strokeStyle  = 'rgba(0,212,255,0.18)';

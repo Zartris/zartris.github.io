@@ -22,7 +22,12 @@ Demo.initInteraction = function (canvas, spawner) {
   }
 
   function hitZone(zone, pos) {
-    const r = zone.radius || Demo.ZONE_RADIUS;
+    if (zone.radius) {
+      // Circular zones (waiting zone)
+      return Math.hypot(pos.x - zone.x, pos.y - zone.y) <= zone.radius;
+    }
+    // Square zones (pickup / dropoff)
+    const r = Demo.ZONE_RADIUS;
     return Math.abs(pos.x - zone.x) <= r &&
            Math.abs(pos.y - zone.y) <= r;
   }
@@ -31,7 +36,7 @@ Demo.initInteraction = function (canvas, spawner) {
     const zones = [];
     if (Demo.pickupZones)  zones.push(...Demo.pickupZones);
     if (Demo.dropoffZones) zones.push(...Demo.dropoffZones);
-    if (Demo.waitingZone && Demo.waitingZone.x) zones.push(Demo.waitingZone);
+    if (Demo.waitingZone && Demo.waitingZone.resolved) zones.push(Demo.waitingZone);
     return zones;
   }
 
@@ -87,7 +92,6 @@ Demo.initInteraction = function (canvas, spawner) {
     const pos = canvasPos(e);
 
     if (dragZone && !hasDragged) {
-      // It was a click — dispatch bag if it's a dropoff gate
       const isDropoff = Demo.dropoffZones.indexOf(dragZone) !== -1;
       if (isDropoff && typeof spawner.spawnForGate === 'function') {
         spawner.spawnForGate(dragZone);
@@ -97,7 +101,14 @@ Demo.initInteraction = function (canvas, spawner) {
     dragZone     = null;
     dragStartPos = null;
     hasDragged   = false;
-    canvas.style.cursor = 'default';
+
+    // Re-check hover so cursor doesn't flicker to default if still over a gate
+    let anyHovered = false;
+    Demo.dropoffZones.forEach(function (z) {
+      z.hovered = hitZone(z, pos);
+      if (z.hovered) anyHovered = true;
+    });
+    canvas.style.cursor = anyHovered ? 'pointer' : 'default';
   });
 
   canvas.addEventListener('mouseleave', function () {
