@@ -50,24 +50,37 @@ Demo.BagSpawner = class {
     return bag;
   }
 
-  // Called by interaction.js when user clicks a gate
+  // Called by interaction.js when user clicks a gate.
+  // Bypasses the auto-spawn capacity cap — picks the zone with the fewest
+  // bags so a manual click almost always succeeds.
   spawnForGate(dropoffZone) {
-    this._spawnBag(dropoffZone);
+    const zones = Demo.pickupZones.slice().sort((a, b) => a.bags.length - b.bags.length);
+    if (!zones.length) return;
+    const pickup = zones[0];
+    const bag = new Demo.Bag(pickup, dropoffZone);
+    pickup.bags.push(bag);
+    Demo.stats.waiting++;
+    Demo.dispatcher.tryAssign(bag);
   }
 };
 
 Demo.drawBags = function (ctx) {
   Demo.pickupZones.forEach(zone => {
     zone.bags.forEach((bag, i) => {
-      if (bag.state !== 'WAITING') return;
+      // Show bag icon until the robot physically picks it up (AT_PICKUP dwell),
+      // not just until it is assigned. DELIVERED bags are already removed from
+      // the array by agent.js bags.shift(), so no need to check for that state.
+      if (bag.state !== 'WAITING' && bag.state !== 'IN_TRANSIT') return;
       // Offset multiple waiting bags above the zone
       const bx = zone.x + (i - 1) * 12;
       const by = zone.y - Demo.ZONE_RADIUS - 10;
 
+      // Dim the icon once a robot has been assigned (IN_TRANSIT)
+      const assigned = bag.state === 'IN_TRANSIT';
       ctx.save();
-      ctx.shadowBlur  = 8;
+      ctx.shadowBlur  = assigned ? 3 : 8;
       ctx.shadowColor = 'rgba(0,212,255,0.9)';
-      ctx.fillStyle   = 'rgba(0,212,255,0.85)';
+      ctx.fillStyle   = assigned ? 'rgba(0,212,255,0.35)' : 'rgba(0,212,255,0.85)';
       ctx.beginPath();
       ctx.moveTo(bx,     by - 5);
       ctx.lineTo(bx + 4, by);
