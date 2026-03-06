@@ -11,16 +11,16 @@ Demo.ZONE_RADIUS = 28;
 
 // Fractions of W and H — set at init time
 Demo.pickupZones = [
-  { id: 'A', label: 'Arrival A', xf: 0.10, yf: 0.20 },
-  { id: 'B', label: 'Arrival B', xf: 0.10, yf: 0.75 },
-  { id: 'C', label: 'Arrival C', xf: 0.88, yf: 0.50 },
+  { id: 'A', label: 'Arrival A', xf: 0.10, yf: 0.20, bags: [] },
+  { id: 'B', label: 'Arrival B', xf: 0.10, yf: 0.75, bags: [] },
+  { id: 'C', label: 'Arrival C', xf: 0.88, yf: 0.50, bags: [] },
 ];
 
 Demo.dropoffZones = [
-  { id: 1, label: 'Gate 1', xf: 0.30, yf: 0.12 },
-  { id: 2, label: 'Gate 2', xf: 0.65, yf: 0.12 },
-  { id: 3, label: 'Gate 3', xf: 0.30, yf: 0.88 },
-  { id: 4, label: 'Gate 4', xf: 0.65, yf: 0.88 },
+  { id: 1, label: 'Gate 1', xf: 0.30, yf: 0.12, hovered: false },
+  { id: 2, label: 'Gate 2', xf: 0.65, yf: 0.12, hovered: false },
+  { id: 3, label: 'Gate 3', xf: 0.30, yf: 0.88, hovered: false },
+  { id: 4, label: 'Gate 4', xf: 0.65, yf: 0.88, hovered: false },
 ];
 
 // Call after canvas resize to convert fractions to pixels
@@ -43,6 +43,8 @@ Demo.drawZones = function (ctx) {
   // Pickup zones — dashed outline with chevron
   Demo.pickupZones.forEach(z => {
     ctx.save();
+    ctx.shadowBlur = 0;
+    ctx.textBaseline = 'alphabetic';
     ctx.strokeStyle = 'rgba(0,212,255,0.55)';
     ctx.lineWidth = 1.2;
     ctx.setLineDash([4, 3]);
@@ -68,6 +70,7 @@ Demo.drawZones = function (ctx) {
   Demo.dropoffZones.forEach(z => {
     const glow = z.hovered ? 0.9 : 0.6;
     ctx.save();
+    ctx.textBaseline = 'alphabetic';
     ctx.strokeStyle = `rgba(0,212,255,${glow})`;
     ctx.lineWidth = z.hovered ? 2 : 1.4;
     ctx.shadowBlur = z.hovered ? 18 : 0;
