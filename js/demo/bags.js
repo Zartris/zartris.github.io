@@ -51,12 +51,10 @@ Demo.BagSpawner = class {
   }
 
   // Called by interaction.js when user clicks a gate.
-  // Bypasses the auto-spawn capacity cap — picks the zone with the fewest
-  // bags so a manual click almost always succeeds.
+  // Picks a random arrival zone, bypassing the auto-spawn capacity cap.
   spawnForGate(dropoffZone) {
-    const zones = Demo.pickupZones.slice().sort((a, b) => a.bags.length - b.bags.length);
-    if (!zones.length) return;
-    const pickup = zones[0];
+    if (!Demo.pickupZones.length) return;
+    const pickup = Demo.pickupZones[Math.floor(Math.random() * Demo.pickupZones.length)];
     const bag = new Demo.Bag(pickup, dropoffZone);
     pickup.bags.push(bag);
     Demo.stats.waiting++;
