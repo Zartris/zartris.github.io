@@ -1,81 +1,287 @@
-1. Intead if referencing the mimir, use unav-sim as that is the simulator that we made and recorded it with:
-- https://github.com/open-airlab/UNav-Sim
-- It is the same visuals, but refer to this instead and link to the github. It is not my paper, but i was the creator of the simulator integration and environment, so it is more relevant to link to this than the mimir paper (mimir is using this simulator as well).
+# Homepage Todos
+
+---
+
+## DONE
+
+- [x] Replace MIMIR references with UNav-Sim (link to https://github.com/open-airlab/UNav-Sim)
+- [x] Add paper links throughout the homepage
+- [x] Replace all GIFs with WebMs
+- [x] Expertise section — add expandable row-breakout panels (click card to reveal detail)
+- [x] Expertise section — fill panels with PhD research content
+- [x] Fix LinkedIn URL (https://www.linkedin.com/in/jonas-le-fevre/)
+- [x] Simulation section — rewrite to lead with UNav-Sim, then generalise to other domains
+- [x] Simulation section — add wind turbine inspection video (local WebM)
+- [x] Simulation section — add wind estimation / TI demo video (local WebM)
+- [x] Publications — add additional papers (ICAR 2023, RAL 2021, CASE 2021, Frontiers 2022, etc.)
+
+---
+
+## HIGH PRIORITY — Reframe the site
+
+The site currently reads as a PhD portfolio. The target audience is industrial companies
+(robotics engineers, CTOs, hiring managers). The goal is to present the *whole person*:
+a full-stack engineer who did a PhD, not a PhD student who also does engineering.
+
+### About section rewrite
+- [ ] Change the headline — "Building the future of autonomous coordination" is generic.
+      Something more personal and grounded: who Jonas is, not just what he works on.
+- [ ] Rewrite body copy to lead with the industrial/engineering identity, not the PhD.
+      Order of emphasis: engineer → researcher → builder.
+      The PhD is a proof of depth, not the whole story.
+- [ ] Reframe stats:
+  - "3 Years of PhD" → something less academic (e.g. "Industrial PhD" or remove entirely)
+  - "1K+ Robots in Fleet" — Jonas is hesitant about this; revisit wording to be accurate
+    (it's the scale BEUMER operates at, not personal deployment)
+- [ ] Add a profile photo (see Image Prompts section below)
+- [ ] Update the about-grid layout to accommodate a photo alongside the text
+
+### Hero section
+- [ ] Revisit the tagline — currently very PhD-focused.
+      Should hint at the breadth: research depth + real-world deployment + hardware.
+      Example direction: "From circuit boards to robot fleets. Research that ships."
+- [ ] Consider whether the "PhD · Multi-Agent Robotics · Aarhus University" pre-tag is still right,
+      or whether it should lead with the role/industry angle.
+
+---
+
+## NEW SECTION — Work Experience / Career
+
+- [ ] Add a Work Experience or Career Timeline section after About (before Expertise or after Expertise).
+      This is currently completely absent and is essential for industrial hiring managers.
+- [ ] Content to cover:
+  - BEUMER Group A/S — Industrial PhD co-funding partner. What Jonas built there.
+    (No visual content yet from BEUMER — use text/icons for now, add visuals later)
+  - Pre-PhD work and other roles visible on LinkedIn
+  - Aarhus University / AIR Lab — research role in context
+- [ ] Section style: could be a vertical timeline, or a two-column role-card layout.
+      Should match the dark hacker aesthetic but feel substantial, not academic.
+
+---
+
+## MEDIUM PRIORITY — Content & Polish
+
+### Expertise panels
+- [ ] Once Jonas has visual content from BEUMER, update the Embedded Systems & Hardware
+      and Sensor Fusion panels to include real industrial project context.
+- [ ] Consider adding a brief "Industrial" vs "Research" label to each panel
+      to signal which skills have been deployed at scale.
+
+### Technical fixes
+- [ ] Fix copyright year in footer: 2025 → 2026
+- [ ] Fix the blank/dead gap in the Research section
+      (large empty space between the section header and first paper card)
+- [ ] Add a CV / resume download button — either in the About section or the nav/hero.
+      Needs an actual PDF to link to.
+
+### Contact section
+- [ ] The email is still @ece.au.dk (university address). Decide whether to keep this
+      or add/switch to a personal email going forward.
+- [ ] "Open to research collaborations, industry positions..." — adjust wording to
+      emphasise industry-first given the target audience.
+
+---
+
+## LOW PRIORITY — Nice to Have
+
+- [ ] Add a photo to the hero section or use a professional photo as a background element
+- [ ] Expertise panel — once BEUMER context is added, consider a "Projects" or "Industry Work"
+      sub-section within each panel beyond the current research-only content
+- [ ] Add an Open Source section or GitHub highlight for repos that demonstrate breadth
+      (fuse, LearningKalmanFilters, Course-on-Game-Theory-and-Self-Driving-Cars, etc.)
+- [ ] Dark/light mode toggle — low priority but would show frontend care
+- [ ] OG image for social sharing (currently no og:image meta tag)
+
+---
+
+## IMAGE PROMPTS & PHOTOGRAPHY DIRECTION
+
+The site aesthetic is: black background (#07080A), cyan accent (#00d4ff), monospace fonts,
+hacker/engineering tone. All images should feel at home in this palette — dark, high-contrast,
+with cool/teal lighting where possible. No bright white backgrounds. No stock-photo cheerfulness.
+
+---
+
+### 1. Profile Photo (About section) — PHOTOGRAPHY SESSION NEEDED
+
+This is the most important image. It will anchor the About section and make the site feel
+like a real person rather than a CV document.
+
+**Shoot direction:**
+- Location: Robotics lab, workshop, or server room — somewhere that signals "engineer", not office.
+  A blurred robot arm, screen glow, or circuit board in the background is ideal.
+- Lighting: Single key light from one side (dramatic, Rembrandt-style). Avoid flat studio light.
+  A monitor or LED strip providing a cyan/teal rim light on the far side would be perfect.
+- Pose: Relaxed but direct. Looking at the camera. Not smiling broadly — composed, confident.
+  Seated at a desk or standing with arms crossed/natural both work.
+- Attire: Dark hoodie, dark shirt, or technical jacket. Nothing corporate.
+- Framing: Head and shoulders to upper torso. Slight headroom. Not centred — slightly offset left
+  so the image can sit to the right of the text in the about-grid.
+- Post-processing: High contrast. Slightly desaturated (not B&W, but not punchy colour either).
+  A subtle cyan colour grade in the shadows. Could add a very light film grain.
+- Format: Portrait orientation, roughly 3:4 or 2:3 ratio. At least 800px wide for web.
+
+---
+
+### 2. AI-generated: Multi-robot coordination overhead view
+*For About section background accent or Expertise MAPF panel*
+
+Prompt (Midjourney / DALL-E / Stable Diffusion):
+"Aerial top-down view of a large warehouse floor with dozens of autonomous mobile robots
+navigating narrow aisles, dark industrial environment, cyan and blue holographic pathlines
+overlaid showing robot trajectories, cinematic lighting, photorealistic, high contrast,
+deep shadows, moody atmosphere, no people, clean composition --ar 16:9 --style raw"
+
+Usage: Subtle background or section divider. Apply a dark overlay (70-80% opacity)
+before placing text over it.
+
+---
+
+### 3. AI-generated: Graph neural network / factor graph visualization
+*For Research section or Expertise panel (MAPF, Motion Planning)*
+
+Prompt:
+"Abstract glowing network graph with nodes and edges floating in dark space,
+cyan and white light, hexagonal nodes, mathematical precision, factor graph structure,
+data flowing along edges, futuristic, high detail, black background, no text,
+geometric and clean --ar 16:9 --style raw"
+
+Usage: Paper visual placeholder for CAMETA or Adaptive GBP if needed.
+Or decorative section background element.
+
+---
+
+### 4. AI-generated: Drone approaching wind turbine
+*For Simulation section "Beyond underwater" header, or wind turbine inspection paper card*
+
+Prompt:
+"Industrial quadrotor drone flying close to a massive offshore wind turbine blade,
+overcast dramatic sky, dark grey clouds, photorealistic, cinematic composition,
+the drone is small relative to the massive turbine, motion blur on the blades,
+cool desaturated colour palette, teal/cyan atmospheric haze, eye-level perspective
+looking along the blade --ar 16:9 --style raw"
+
+Usage: Optional background for the sim-beyond section or as a visual for the
+wind turbine paper in Publications.
+
+---
+
+### 5. AI-generated: Embedded hardware close-up
+*For Expertise panel (Embedded Systems & Hardware)*
+
+Prompt:
+"Extreme close-up macro photograph of a custom PCB circuit board, STM32 microcontroller,
+soldered components, dark background, selective focus with shallow depth of field,
+green and cyan LED light glowing from components, industrial quality, sharp details
+on the chips and traces, moody professional product photography --ar 4:3 --style raw"
+
+Usage: Visual anchor for the Embedded Systems expertise panel.
+
+---
+
+### 6. AI-generated: Underwater AUV / ocean floor
+*For UNav-Sim section header or MIMIR publication visual*
+
+Prompt:
+"Photorealistic underwater scene, autonomous underwater vehicle (AUV) submarine robot
+exploring a dark ocean floor, bioluminescent particles drifting, deep blue-black water,
+volumetric god-rays from above, cinematic, moody, isolated robot in vast underwater space,
+photorealistic Unreal Engine render quality --ar 16:9 --style raw"
+
+Usage: Optional decorative header for the Simulation section.
+Could replace or supplement the current gif-grid header area.
+
+---
+
+### 7. AI-generated: Warehouse robot fleet (for Work Experience section)
+*For BEUMER / industrial career section — if adding a Work Experience block*
+
+Prompt:
+"Wide-angle view inside a modern automated logistics warehouse, multiple autonomous mobile
+robots moving between large shelving racks, warm industrial overhead lighting contrasted
+with cool blue sensor beams, no people visible, conveyor belts, high ceilings,
+cinematic depth of field, photorealistic, slightly desaturated --ar 16:9 --style raw"
+
+Usage: Background or card visual for the BEUMER/industrial work section.
+Use a dark overlay when placing text over it.
 
 
-2. We need to add link to all the papers on the homepage. 
+### 8. Interactive baggage handling minigame (new canvas section)
 
-3. We should also talk more about the expertise we have in each field like, control, motion planing, vision and mapping, etc. So we can list some of our competencies and then link to the relevant papers for each competency. For example, we can have a section on "Control" and then list the papers that are related to control, such as the visual tracking nonlinear model predictive control method for autonomous wind-turbine inspection paper. We can do the same for motion planning, vision, mapping, etc. This way we can showcase our expertise in each area and provide links to our relevant work.
-- We have the expertise section already. 
+**Context:** The current hero `simulation.js` is a background animation — keep it as-is.
+This is a NEW interactive canvas demo, placed in its own section (likely between Expertise and
+Research, or as a standalone "Live Demo" block). It demonstrates MAPF/fleet scheduling in a
+context industrial hiring managers immediately understand: airport baggage logistics.
+Robots are still cyan dots with trails and GNN edges — same visual language, but now they have
+a job to do. The viewer can interact with it.
 
-4. all gifs should be replaced with webms. 
+**Why this works for the audience:** BEUMER's core business is exactly this — automated
+baggage and parcel handling. This demo makes the research legible without any robotics background.
 
+#### 8a. Floor layout design
+- [ ] Define a fixed set of Pickup Zones (~3–4): represent baggage conveyor belt ends / arrivals
+- [ ] Define a fixed set of Dropoff Zones (~4–6): represent departure gates or sorting stations
+- [ ] Draw zones on canvas as distinct markers in site aesthetic:
+      - Pickup: small horizontal chevron/conveyor symbol, cyan outline, labelled "Arrival A" etc.
+      - Dropoff: numbered square gate icon, slightly warmer accent (e.g. white/off-cyan), labelled "Gate 1" etc.
+- [ ] Zones positioned around the canvas edges/corners, leaving the centre clear for robot movement
+- [ ] Keep the dark background (#07080A) and GNN edges between nearby robots
 
-INFO: 
-Publications and datasets associated with Jonas le Fevre Sejersen (as listed on his Google Scholar profile)
-Overview of works
-#	Publication title (author lists omitted)	Venue & year	Main link
-1	UNav‑Sim: A visually realistic underwater robotics simulator and synthetic data‑generation framework	2023 IEEE/RSJ International Conference on Advanced Robotics (ICAR)	ArXiv preprint: https://arxiv.org/abs/2310.11927 #tags: underwater robotics, simulator, synthetic data, Unreal Engine 5, ROS, photorealistic rendering, vision-based navigation, SLAM, depth estimation, object segmentation, control
+#### 8b. Bag spawning system
+- [ ] Bags auto-spawn at pickup zones on a timer (e.g. one every 4–6 seconds)
+- [ ] Unassigned bags shown as a small glowing square/diamond sitting at the pickup zone
+- [ ] Queue cap per zone (e.g. max 3 waiting bags) — prevents runaway accumulation
+- [ ] When a bag is picked up, it disappears from the zone marker
 
-2	Deep learning for vision‑based navigation in autonomous drone racing	Chapter 15 in Deep Learning for Robot Perception and Cognition (Elsevier, 2022)	DOI:10.1016/B978‑0‑32‑385787‑1.00020‑8 (https://www.sciencedirect.com/science/chapter/edited-volume/abs/pii/B9780323857871000208) #tags: deep learning, vision-based navigation, autonomous drone racing, system decomposition, end-to-end planning, gate localisation, pose estimation, perception under agile flight conditions, transfer learning, reinforcement learning
+#### 8c. Robot state machine
+Extend `Agent` class from random wandering to a proper task lifecycle:
+- [ ] States: `IDLE` → `TO_PICKUP` → `AT_PICKUP` (brief 0.5s pause) → `TO_DROPOFF` → `AT_DROPOFF` (brief pause) → `IDLE`
+- [ ] When `IDLE`: robot wanders exactly like current behavior (preserves existing feel)
+- [ ] When carrying a bag: draw a small dot/square orbiting the robot, slightly warmer glow
+- [ ] Smooth steering toward target zone using existing velocity-smoothing approach (no need for full pathfinding)
 
-3	Real‑time volumetric‑semantic exploration and mapping: an uncertainty‑aware approach	2021 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)	ArXiv preprint: https://arxiv.org/abs/2109.01474 #tags: exploration, mapping, next-best-view planning, semantic segmentation, uncertainty-aware sensor model, shipyard inspection
+#### 8d. Task dispatcher (fleet scheduler)
+- [ ] When a bag spawns unassigned AND an idle robot exists: assign nearest idle robot
+- [ ] Assignment is greedy (nearest-first) — explicitly mirrors the research problem statement
+      (can mention in a caption: "Greedy baseline — the research replaces this with GNN-based prediction")
+- [ ] If all robots are busy, bags queue at pickup zones waiting for a robot to free up
 
-4	GridNet: image‑agnostic conditional anomaly detection for indoor surveillance	IEEE Robotics and Automation Letters 6 (2) 1638–1645 (2021)	DOI:10.1109/LRA.2021.3057003 (https://ieeexplore.ieee.org/abstract/document/9345954) #tags: anomaly detection, indoor surveillance, image-agnostic, grid representation, auto-encoder, loss function, precision, recall
+#### 8e. Interactivity — click to route a bag
+- [ ] Hovering a dropoff zone: cursor changes, zone pulses with a label "Click to route a bag here"
+- [ ] Clicking a dropoff zone: spawns a bag at a random pickup zone, assigns it to that specific gate
+- [ ] Brief visual feedback on click: zone flashes cyan, a new bag appears at the pickup zone and
+      a robot immediately heads for it
+- [ ] Tooltip/hint text somewhere on the canvas: "Click a gate to dispatch a bag"
 
-5	MIMIR‑UW: a multipurpose synthetic dataset for underwater navigation and inspection	2023 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS) dataset paper	(https://ieeexplore.ieee.org/abstract/document/10341436) #tags: dataset, underwater navigation, SLAM, depth estimation, object segmentation, synthetic data, ROS, Unreal Engine 5, AirSim
+#### 8f. HUD / status display
+- [ ] Small monospace status overlay in one corner (matching site font):
+      "12 bags delivered · 3 in transit · 2 waiting"
+- [ ] Counters increment live as robots complete deliveries
+- [ ] Optional: a "fleet efficiency" percentage that climbs as deliveries complete
+      (purely cosmetic but gives the viewer a sense of system performance)
 
-6	Safe vessel navigation visually aided by autonomous unmanned aerial vehicles in congested harbors and waterways	2021 IEEE 17th International Conference on Automation Science and Engineering (CASE)	DOI:10.1109/CASE49439.2021.9551644 (https://ieeexplore.ieee.org/abstract/document/9551637) # tags: vessel navigation, UAV assistance, GPS fusion, semantic segmentation, harbor detection, long‑range images
+#### 8g. Section wrapper in HTML/CSS
+- [ ] New `<section id="demo">` added to nav and page
+- [ ] Section header: small label "Live Demo", headline something like
+      "Fleet coordination — watch it work." with a one-liner explaining what's happening
+- [ ] Canvas fills the section (fixed height, ~500–600px, full width)
+- [ ] Below canvas: brief caption explaining the research connection
+      ("Each robot uses local sensing only. No central controller. No communication between agents.")
 
-7	On the advantages of multiple stereo‑vision camera designs for autonomous drone navigation	arXiv preprint and ICRA 2021 workshop	ArXiv preprint: https://arxiv.org/abs/2105.12691 #tags: multi‑camera design, stereo vision, drone navigation, exploration, mapping, semantic segmentation 
+#### 8h. Out of scope for v1 (note for future)
+- Charging stations (robots deplete energy and must recharge before next task)
+- Plane arrivals / departures (burst event triggering a surge of bags at a pickup zone)
+- Multiple bag priorities (urgent bags jump the queue)
+- Pathfinding around obstacles (currently straight-line steering is fine)
 
-8	A real‑time method for time‑to‑collision estimation from aerial images	Journal of Imaging 8 (3): 62 (2022)	DOI:10.3390/jimaging8030062 (https://www.mdpi.com/2313-433X/8/3/62) #tags: collision estimation, aerial images, vessel tracking
+---
 
-9	Visual tracking nonlinear model predictive control method for autonomous wind‑turbine inspection	2023 IEEE/RSJ International Conference on Advanced Robotics (ICAR)	ArXiv preprint: https://arxiv.org/abs/2310.14030 #tags: control, visual tracking, wind turbine inspection
+## NOTES
 
-10	Integrated design‑sense‑plan architecture for autonomous geometric‑semantic mapping with UAVs	Frontiers in Robotics and AI 9 (2022)	DOI:10.3389/frobt.2022.911974 (https://www.frontiersin.org/journals/robotics-and-ai/articles/10.3389/frobt.2022.911974/full) #tags: UAV, geometric-semantic mapping, integrated design-sense-plan, semantic segmentation, next-best-view planning
-
-11	CAMETA: conflict‑aware multi‑agent estimated time‑of‑arrival prediction for mobile robots	2023 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)	ArXiv preprint: https://arxiv.org/abs/2503.00074 #tags: multi-agent path planning, ETA prediction, conflict-aware, graph neural networks, path selection
-
-12	Multi‑agent path planning in complex environments using Gaussian belief propagation with global path finding	Accepted for ICRA 2025	ArXiv preprint: https://arxiv.org/abs/2502.20369 #tags: multi-agent path planning, Gaussian belief propagation, global path finding, global path integration through tracking factor
-
-13	A fast and accurate approach to multiple‑vehicle localization and tracking from monocular aerial images	Journal of Imaging 7 (12): 270 (2021)	DOI:10.3390/jimaging7120270 (https://www.mdpi.com/2313-433X/7/12/270) #tags: vessel localization, tracking, monocular aerial images, rotated bounding boxes, segmentation
-
-14	GIANT – global path integration and attentive graph networks for multi‑agent trajectory planning	2025 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)	DOI:10.1109/IROS60139.2025.11246312 (https://ieeexplore.ieee.org/abstract/document/11246312) #tags: multi-agent trajectory planning, global path integration, attentive graph neural networks, no communication, control
-
-15	Robust multi‑agent path planning in dynamic environments	PhD thesis (Aarhus University, 2025)	Pure/AU thesis page
-
-16	Dry Harbour image dataset for semantic segmentation	2022 dataset (supports the integrated design–sense–plan paper)	Figshare dataset DOI:10.18742/20448834
-Summaries of the abstracts (https://kcl.figshare.com/articles/dataset/Dry_Harbour_Image_Dataset_for_Semantic_Segmentation/20448834?file=36698445) #tags: dataset, semantic segmentation, dry dock, shipyard, Unreal Engine, AirSim (DOI - Is supplement to Integrated design-sense-plan architecture for autonomous geometric-semantic mapping with UAVsPDF)
-
-UNav‑Sim – This work introduces UNav‑Sim, an open‑source underwater simulator built on Unreal Engine 5. It addresses the poor rendering quality of previous underwater simulators by providing high‑detail photorealistic scenes and a complete vision‑based navigation stack. Because it supports ROS, researchers can develop and test algorithms such as perception and control in a simulated environment that closely resembles the real world.
-
-Deep learning for vision‑based navigation in autonomous drone racing – This book chapter reviews methods for autonomous drone racing and provides a framework for applying deep learning to vision‑based navigation. The authors discuss system decomposition (separate modules for perception, planning and control) versus end‑to‑end planning approaches, highlighting techniques for gate localisation, pose estimation and perception under agile flight conditions. The chapter emphasises that lessons from drone racing—such as leveraging transfer learning and reinforcement learning—are valuable for robot perception and cognition in cluttered environments.
-
-Real‑time volumetric‑semantic exploration and mapping – This paper proposes a holistic framework for autonomous aerial inspection. It combines a receding‑horizon next‑best‑view planner with 3‑D semantic segmentation to guide exploration. The reward functions incorporate both geometric and semantic information, and an uncertainty‑aware sensor model improves efficiency. Experiments in shipyard environments show that including semantic information leads to better inspection coverage.
-
-GridNet – GridNet introduces an anomaly‑detection method for indoor surveillance that is image‑agnostic—it converts images into grid representations and attaches a location vector. A deep auto‑encoder reconstructs normal patterns; a novel loss function penalises incorrect reconstructions to better separate anomalies from normal scenes. Experiments demonstrate improved precision and recall compared with baseline methods, and the work is published in IEEE Robotics and Automation Letters.
-
-MIMIR‑UW dataset – The MIMIR‑UW dataset provides synthetic underwater data for tasks like SLAM, depth estimation and object segmentation. Each track includes three camera sensors (frontal, stereo and downward views), inertial measurements, and ground‑truth pose, depth and segmentation. The dataset covers four environments with varying lighting and dynamic obstacles and is designed to bridge the gap between simulation and real‑world underwater navigation. It shows how the synthetic data can be used to train algorithms that transfer to physical robots.
-
-Safe vessel navigation visually aided by UAVs – In congested harbours and waterways, this paper proposes fusing GPS signals with long‑range images captured by an unmanned aerial vehicle to assist vessel navigation. A semantic segmentation network detects the vessel, water and obstacles, while ground‑sample‑distance (GSD) estimation converts pixel distances into real distances. The method is one of the first to detect unknown obstacles from long‑range images for navigation assistance.
-
-Multiple stereo‑vision camera designs for autonomous drone navigation – This study investigates multi‑camera UAV designs paired with planning and mapping algorithms. The authors integrate a reconfigurable multi‑stereo camera rig with a receding‑horizon exploration strategy and evaluate different numbers and placements of stereo rigs. They find that multi‑camera designs improve mapping performance and resiliency in exploration tasks.
-
-Real‑time method for time‑to‑collision estimation from aerial images – The authors propose a deep learning approach to estimate the time until collision between moving vessels using aerial video. A network detects and tracks boats via rotated bounding boxes and predicts collisions using colour‑coded arrows. Experiments show that the method achieves mean error of roughly 0.36 s and standard deviation ~0.11 s in time‑to‑collision estimates.
-
-Visual tracking nonlinear model predictive control (VT‑NMPC) for wind‑turbine inspection – This paper presents a nonlinear model‑predictive control framework that tracks the surfaces of wind‑turbine blades instead of pre‑defined trajectories. The controller includes a visual tracking cost and uses a decoupled path planner. Experiments demonstrate improved coverage of the blade surfaces and greater robustness compared with traditional MPC designs, showing that the method can complete inspection missions more reliably.
-
-Integrated design–sense–plan architecture for autonomous geometric‑semantic mapping – This work proposes a complete system for UAV inspection that unifies drone design, sensing and planning. It uses a lightweight multi‑camera design with next‑best‑view planning guided by deep semantic segmentation. A utility function combines geometric and semantic information, and a unified approach balances power consumption and mapping performance. Experiments in simulation and field trials show that leveraging semantic information improves exploration efficiency.
-
-CAMETA (conflict‑aware multi‑agent estimated time‑of‑arrival prediction) – The CAMETA framework performs ETA prediction for multiple robots by combining path planning, ETA prediction and path selection. It uses a heterogeneous map representation and trains a graph neural network to predict travel times while accounting for potential conflicts. The method improves mean absolute percentage error by about 29.5 % (global paths) and 44 % (local policies) compared with A* and demonstrates robustness to sensor noise.
-
-Multi‑agent path planning in complex environments using Gaussian belief propagation with global path finding – This paper combines Gaussian belief propagation with global path integration and introduces a tracking factor that keeps agents aligned with planned paths. Simulation results across diverse scenarios show that the tracking factor reduces path deviation by 28 % for single agents and 16 % for multi‑agent scenarios. The work is accepted for ICRA 2025.
-
-A fast and accurate approach to multiple‑vehicle localisation and tracking from monocular aerial images – This journal article describes an end‑to‑end method to detect, segment and track multiple vessels in aerial video using rotated bounding boxes and segmentation. The network uses simulated data to learn deep features, achieving accurate vessel tracking with robust occlusion handling and real‑time performance.
-
-GIANT – global path integration and attentive graph networks – GIANT integrates global path planning with local navigation strategies and employs attentive graph neural networks to handle interactions among multiple robots. According to a conference summary, the model allows robots to follow pre‑planned global routes while dynamically adapting to environmental changes. Noise injection during training improves robustness. Compared to baseline methods (NH‑ORCA, DRL‑NAV and GA3C‑CADRL), GIANT achieves higher success rates, lower collision rates and more efficient navigation in various simulated environments.
-
-Robust multi‑agent path planning in dynamic environments (PhD thesis) – Jonas le Fevre Sejersen’s PhD thesis presents a comprehensive framework for multi‑agent path planning. It introduces conflict‑aware ETA prediction (CAMETA), a Gaussian belief propagation planner with a tracking factor (used in item 12), context‑aware parameter tuning via graph neural networks and reinforcement learning, and an attentive graph‑neural‑network–based multi‑agent planner. These components improve robustness and adaptability in dynamic environments.
-
-Dry Harbour image dataset for semantic segmentation – This dataset provides training images and ground‑truth masks for semantic segmentation of dry‑dock shipyards, supporting the integrated design–sense–plan paper. The images were generated with Unreal Engine 4 and AirSim and include labels for sky, harbour wall, floor, ship and unknown classes. The dataset is released on Figshare with the DOI 10.18742/20448834.
+- Expertise panel BEUMER content: hold until Jonas has real visual material to show.
+  Placeholder text is fine for now; don't fabricate project descriptions.
+- All AI-generated images should be run through the site's colour grading
+  (desaturate slightly, add dark overlay, optionally tint shadows toward #00d4ff cyan)
+  so they feel native to the dark hacker palette rather than pasted in.
+- WebM conversion of windturbine-inspection.webm was still running when this was written —
+  verify the file is complete before pushing.

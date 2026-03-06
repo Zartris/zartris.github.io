@@ -107,7 +107,7 @@
           </div>
           <div class="about-links">
             <a href="https://github.com/zartris" class="link-chip" target="_blank">GitHub ↗</a>
-            <a href="https://linkedin.com/in/[your-linkedin]" class="link-chip" target="_blank">LinkedIn ↗</a>
+            <a href="https://www.linkedin.com/in/jonas-le-fevre/" class="link-chip" target="_blank">LinkedIn ↗</a>
             <a href="mailto:jonas.le.fevre@ece.au.dk" class="link-chip">Email ↗</a>
             <a href="https://scholar.google.com/citations?user=v8-1JZcAAAAJ" class="link-chip" target="_blank">Scholar ↗</a>
           </div>
@@ -122,10 +122,12 @@
       <div class="expertise-header reveal">
         <p class="section-label">Expertise</p>
         <h2>Full-stack autonomy</h2>
-        <p class="section-desc">From the equations to the warehouse floor — I work at every layer of the robotics stack.</p>
+        <p class="section-desc">From the equations to the warehouse floor — I work at every layer of the robotics stack. Click any area to explore deeper.</p>
       </div>
-      <div class="skills-grid">
-        <div class="skill-card reveal reveal-delay-1">
+      <div class="skills-grid" id="skillsGrid">
+
+        <!-- ROW 1 -->
+        <div class="skill-card reveal reveal-delay-1" data-skill="mapf">
           <span class="skill-icon">⬡</span>
           <div class="skill-title">Multi-Agent Path Planning</div>
           <p class="skill-desc">Coordinating large fleets of agents in dynamic environments. Conflict-aware prediction, scalable algorithms, real-world robustness.</p>
@@ -135,14 +137,10 @@
             <span class="skill-tag">ETA Prediction</span>
             <span class="skill-tag">Fleet Control</span>
           </div>
-          <div class="skill-papers">
-            <span class="skill-papers-label">Related work:</span>
-            <a href="https://ieeexplore.ieee.org/abstract/document/11246312" target="_blank" class="skill-paper-link">GIANT (IROS 2025) ↗</a>
-            <a href="https://arxiv.org/abs/2502.20369" target="_blank" class="skill-paper-link">MAGIC (ICRA 2025) ↗</a>
-            <a href="https://arxiv.org/abs/2503.00074" target="_blank" class="skill-paper-link">CAMETA (IROS 2023) ↗</a>
-          </div>
+          <div class="skill-expand-hint"><span>Explore</span><span class="skill-arrow">↓</span></div>
         </div>
-        <div class="skill-card reveal reveal-delay-2">
+
+        <div class="skill-card reveal reveal-delay-2" data-skill="motion">
           <span class="skill-icon">↗</span>
           <div class="skill-title">Motion Planning & Control</div>
           <p class="skill-desc">Local and global planning for real-time robot navigation. Probabilistic inference, learned policies, and visual model-predictive control.</p>
@@ -152,14 +150,10 @@
             <span class="skill-tag">MARL</span>
             <span class="skill-tag">MPC</span>
           </div>
-          <div class="skill-papers">
-            <span class="skill-papers-label">Related work:</span>
-            <a href="https://ieeexplore.ieee.org/abstract/document/11246312" target="_blank" class="skill-paper-link">GIANT (IROS 2025) ↗</a>
-            <a href="https://arxiv.org/abs/2502.20369" target="_blank" class="skill-paper-link">MAGIC (ICRA 2025) ↗</a>
-            <a href="https://arxiv.org/abs/2310.14030" target="_blank" class="skill-paper-link">VT-NMPC (ICAR 2023) ↗</a>
-          </div>
+          <div class="skill-expand-hint"><span>Explore</span><span class="skill-arrow">↓</span></div>
         </div>
-        <div class="skill-card reveal reveal-delay-3">
+
+        <div class="skill-card reveal reveal-delay-3" data-skill="simulation">
           <span class="skill-icon">◈</span>
           <div class="skill-title">Simulation Engineering</div>
           <p class="skill-desc">Building photorealistic simulation environments and robot models for research and training. Creator of UNav-Sim, used by labs worldwide.</p>
@@ -169,13 +163,13 @@
             <span class="skill-tag">AirSim</span>
             <span class="skill-tag">Docker</span>
           </div>
-          <div class="skill-papers">
-            <span class="skill-papers-label">Related work:</span>
-            <a href="https://arxiv.org/abs/2310.11927" target="_blank" class="skill-paper-link">UNav-Sim (ICAR 2023) ↗</a>
-            <a href="https://ieeexplore.ieee.org/abstract/document/10341436" target="_blank" class="skill-paper-link">MIMIR-UW (IROS 2023) ↗</a>
-          </div>
+          <div class="skill-expand-hint"><span>Explore</span><span class="skill-arrow">↓</span></div>
         </div>
-        <div class="skill-card reveal reveal-delay-1">
+
+        <!-- Row 1 panel — injected by JS -->
+
+        <!-- ROW 2 -->
+        <div class="skill-card reveal reveal-delay-1" data-skill="fusion">
           <span class="skill-icon">⊕</span>
           <div class="skill-title">Sensor Fusion & Mapping</div>
           <p class="skill-desc">Fusing multi-modal sensor data for robust real-time state estimation. Semantic 3D mapping, next-best-view planning, and SLAM pipelines.</p>
@@ -185,13 +179,10 @@
             <span class="skill-tag">IMU</span>
             <span class="skill-tag">SLAM</span>
           </div>
-          <div class="skill-papers">
-            <span class="skill-papers-label">Related work:</span>
-            <a href="https://arxiv.org/abs/2109.01474" target="_blank" class="skill-paper-link">Volumetric-Semantic Mapping (IROS 2021) ↗</a>
-            <a href="https://www.frontiersin.org/journals/robotics-and-ai/articles/10.3389/frobt.2022.911974/full" target="_blank" class="skill-paper-link">Design-Sense-Plan (Frontiers 2022) ↗</a>
-          </div>
+          <div class="skill-expand-hint"><span>Explore</span><span class="skill-arrow">↓</span></div>
         </div>
-        <div class="skill-card reveal reveal-delay-2">
+
+        <div class="skill-card reveal reveal-delay-2" data-skill="embedded">
           <span class="skill-icon">⚙</span>
           <div class="skill-title">Embedded Systems & Hardware</div>
           <p class="skill-desc">From bare-metal firmware to robot hardware integration. Designing and deploying custom systems for real production environments.</p>
@@ -201,8 +192,10 @@
             <span class="skill-tag">PX4</span>
             <span class="skill-tag">C++</span>
           </div>
+          <div class="skill-expand-hint"><span>Explore</span><span class="skill-arrow">↓</span></div>
         </div>
-        <div class="skill-card reveal reveal-delay-3">
+
+        <div class="skill-card reveal reveal-delay-3" data-skill="vision">
           <span class="skill-icon">◉</span>
           <div class="skill-title">Computer Vision & Deep Learning</div>
           <p class="skill-desc">Graph neural networks, reinforcement learning, object detection, tracking and semantic segmentation. Research-grade models that deploy to real hardware.</p>
@@ -212,13 +205,11 @@
             <span class="skill-tag">MARL</span>
             <span class="skill-tag">CNN</span>
           </div>
-          <div class="skill-papers">
-            <span class="skill-papers-label">Related work:</span>
-            <a href="https://ieeexplore.ieee.org/abstract/document/9345954" target="_blank" class="skill-paper-link">GridNet — RAL 2021 ↗</a>
-            <a href="https://www.mdpi.com/2313-433X/7/12/270" target="_blank" class="skill-paper-link">Vehicle Tracking (J. Imaging 2021) ↗</a>
-            <a href="https://www.sciencedirect.com/science/chapter/edited-volume/abs/pii/B9780323857871000208" target="_blank" class="skill-paper-link">Drone Racing (Book Chapter 2022) ↗</a>
-          </div>
+          <div class="skill-expand-hint"><span>Explore</span><span class="skill-arrow">↓</span></div>
         </div>
+
+        <!-- Row 2 panel — injected by JS -->
+
       </div>
     </div>
   </section>
@@ -388,15 +379,17 @@
 
   </section>
 
-  <!-- ─── UNAV-SIM ─── -->
+  <!-- ─── SIMULATION ─── -->
   <section id="dataset">
     <div class="section-inner">
+
+      <!-- UNav-Sim -->
       <div class="dataset-header reveal">
         <p class="section-label">Simulation & Environments</p>
-        <h2>Built the underwater world</h2>
+        <h2>Built the underwater world.<br>Then kept going.</h2>
         <p class="dataset-lead">
-          I am the creator of <strong>UNav-Sim</strong> — an open-source, photorealistic underwater robotics
-          simulator built on Unreal Engine 5. Designed for vision-based navigation research, it provides
+          I am one of the creators of <strong>UNav-Sim</strong>  — an open-source, photorealistic underwater robotics simulator
+          built on Unreal Engine 5. Designed for vision-based navigation research, it provides
           a complete stack for perception, SLAM, depth estimation, and control — all bridged to ROS.
           I designed and built <strong>all simulation environments and robot models</strong> from scratch,
           and the simulator has been adopted by labs worldwide for algorithm development and synthetic data generation.
@@ -408,31 +401,31 @@
           <video autoplay muted playsinline loop>
             <source src="assets/media/mimir/MIMIR-4envs.webm" type="video/webm">
           </video>
-          <div class="gif-label">Four environments — Ocean Floor, Sand Pipe, Sea Floor, Algae</div>
+          <div class="gif-label">UNav-Sim — four underwater environments</div>
         </div>
         <div class="gif-cell">
           <video autoplay muted playsinline loop>
             <source src="assets/media/mimir/MIMIR-cameras.webm" type="video/webm">
           </video>
-          <div class="gif-label">Multi-camera rig</div>
+          <div class="gif-label">Multi-camera sensor rig</div>
         </div>
         <div class="gif-cell">
           <video autoplay muted playsinline loop>
             <source src="assets/media/mimir/MIMIR-oceanfloor.webm" type="video/webm">
           </video>
-          <div class="gif-label">Ocean Floor env</div>
+          <div class="gif-label">Ocean Floor environment</div>
         </div>
         <div class="gif-cell">
           <video autoplay muted playsinline loop>
             <source src="assets/media/mimir/MIMIR-seafloor.webm" type="video/webm">
           </video>
-          <div class="gif-label">Sea Floor env</div>
+          <div class="gif-label">Sea Floor environment</div>
         </div>
         <div class="gif-cell">
           <video autoplay muted playsinline loop>
             <source src="assets/media/mimir/MIMIR-seaflooralgae.webm" type="video/webm">
           </video>
-          <div class="gif-label">Algae env</div>
+          <div class="gif-label">Algae environment</div>
         </div>
       </div>
 
@@ -441,27 +434,44 @@
         <span>→</span>
       </a>
 
-      <div class="sim-stack reveal">
-        <p class="section-label">Robotics Simulation Stack</p>
-        <div class="sim-stack-grid">
-          <p>
-            I maintain an open-source Unreal Engine 5 robotics simulation stack used for research and
-            development of autonomous systems. The stack provides a complete bridge between UE5 and ROS2,
-            enabling photorealistic simulation of real robot platforms.
-          </p>
-          <div class="social-links-stack">
-            <a href="https://github.com/zartris/RapyutaSimulationPlugins" class="social-link spaced" target="_blank">
-              <span>RapyutaSimulationPlugins</span><span>↗</span>
-            </a>
-            <a href="https://github.com/zartris/rclUE" class="social-link spaced" target="_blank">
-              <span>rclUE — ROS2 ↔ UE5 Bridge</span><span>↗</span>
-            </a>
-            <a href="https://github.com/zartris/turtlebot3-UE" class="social-link spaced" target="_blank">
-              <span>TurtleBot3 in Unreal Engine</span><span>↗</span>
+      <!-- Beyond UNav-Sim -->
+      <div class="sim-beyond reveal">
+        <p class="section-label">Beyond underwater</p>
+        <p class="sim-beyond-text">
+          The same <strong>Unreal Engine 5 + ROS2 pipeline</strong> applies across domains.
+          Simulation is a tool — the goal is always hardware-ready algorithms, whatever the environment.
+        </p>
+
+        <div class="sim-yt-block">
+          <div class="sim-video-wrap">
+            <video autoplay muted playsinline loop>
+              <source src="assets/media/windturbine/windturbine-inspection.webm" type="video/webm">
+            </video>
+          </div>
+          <div class="sim-yt-caption">
+            <p class="section-label">ICAR 2023</p>
+            <p class="sim-yt-title">Autonomous wind turbine inspection</p>
+            <p class="sim-yt-desc">Visual tracking NMPC for drone-based blade inspection — developed and validated in a UE5 simulation environment before deployment.</p>
+            <a href="https://arxiv.org/abs/2310.14030" class="dataset-link" target="_blank" style="margin-top:16px; display:inline-flex;">
+              <span>Read the paper</span><span>→</span>
             </a>
           </div>
         </div>
+
+        <div class="sim-yt-block" style="margin-top:40px;">
+          <div class="sim-video-wrap">
+            <video autoplay muted playsinline loop>
+              <source src="assets/media/windturbine/windturbine-estimation.webm" type="video/webm">
+            </video>
+          </div>
+          <div class="sim-yt-caption">
+            <p class="section-label">Wind Estimation & TI Demo</p>
+            <p class="sim-yt-title">Wind estimation & turbulence intensity</p>
+            <p class="sim-yt-desc">Real-time wind speed and turbulence intensity estimation used to adapt drone behaviour during inspection. Fast-mode demo — accuracy is intentionally reduced for speed, but the pipeline runs live on hardware.</p>
+          </div>
+        </div>
       </div>
+
     </div>
   </section>
 
@@ -617,7 +627,7 @@
         <a href="https://github.com/zartris" class="social-link" target="_blank">
           <span>⬡</span> GitHub
         </a>
-        <a href="https://linkedin.com/in/[your-linkedin]" class="social-link" target="_blank">
+        <a href="https://www.linkedin.com/in/jonas-le-fevre/" class="social-link" target="_blank">
           <span>◈</span> LinkedIn
         </a>
         <a href="https://scholar.google.com/citations?user=v8-1JZcAAAAJ" class="social-link" target="_blank">
