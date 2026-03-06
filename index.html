@@ -25,6 +25,7 @@
     <ul class="nav-links">
       <li><a href="#about">About</a></li>
       <li><a href="#expertise">Expertise</a></li>
+      <li><a href="#demo">Demo</a></li>
       <li><a href="#research">Research</a></li>
       <li><a href="#dataset">Simulation</a></li>
       <li><a href="#publications">Publications</a></li>
@@ -211,6 +212,25 @@
         <!-- Row 2 panel — injected by JS -->
 
       </div>
+    </div>
+  </section>
+
+  <!-- ─── DEMO ─── -->
+  <section id="demo">
+    <div class="section-inner">
+      <div class="demo-header reveal">
+        <p class="section-label">Live Demo</p>
+        <h2>Fleet coordination — watch it work.</h2>
+        <p class="section-desc">Robots receive bag assignments and route themselves between pickup and dropoff zones. Click any gate to dispatch a bag directly.</p>
+      </div>
+      <div class="demo-canvas-wrap reveal">
+        <canvas id="demoCanvas"></canvas>
+        <p class="demo-hint">Click a gate to dispatch a bag</p>
+      </div>
+      <p class="demo-caption reveal">
+        Greedy baseline — nearest idle robot wins the assignment.
+        The research replaces this dispatcher with GNN-based conflict-aware prediction.
+      </p>
     </div>
   </section>
 
