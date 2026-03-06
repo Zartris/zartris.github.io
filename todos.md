@@ -219,60 +219,64 @@ a job to do. The viewer can interact with it.
 baggage and parcel handling. This demo makes the research legible without any robotics background.
 
 #### 8a. Floor layout design
-- [ ] Define a fixed set of Pickup Zones (~3–4): represent baggage conveyor belt ends / arrivals
-- [ ] Define a fixed set of Dropoff Zones (~4–6): represent departure gates or sorting stations
-- [ ] Draw zones on canvas as distinct markers in site aesthetic:
+- [x] Define a fixed set of Pickup Zones (~3–4): represent baggage conveyor belt ends / arrivals
+- [x] Define a fixed set of Dropoff Zones (~4–6): represent departure gates or sorting stations
+- [x] Draw zones on canvas as distinct markers in site aesthetic:
       - Pickup: small horizontal chevron/conveyor symbol, cyan outline, labelled "Arrival A" etc.
       - Dropoff: numbered square gate icon, slightly warmer accent (e.g. white/off-cyan), labelled "Gate 1" etc.
-- [ ] Zones positioned around the canvas edges/corners, leaving the centre clear for robot movement
-- [ ] Keep the dark background (#07080A) and GNN edges between nearby robots
+- [x] Zones positioned around the canvas edges/corners, leaving the centre clear for robot movement
+- [x] Keep the dark background (#07080A) and GNN edges between nearby robots
 
 #### 8b. Bag spawning system
-- [ ] Bags auto-spawn at pickup zones on a timer (e.g. one every 4–6 seconds)
-- [ ] Unassigned bags shown as a small glowing square/diamond sitting at the pickup zone
-- [ ] Queue cap per zone (e.g. max 3 waiting bags) — prevents runaway accumulation
-- [ ] When a bag is picked up, it disappears from the zone marker
+- [x] Bags auto-spawn at pickup zones on a timer (e.g. one every 4–6 seconds)
+- [x] Unassigned bags shown as a small glowing square/diamond sitting at the pickup zone
+- [x] Queue cap per zone (e.g. max 3 waiting bags) — prevents runaway accumulation
+- [x] When a bag is picked up, it disappears from the zone marker
 
 #### 8c. Robot state machine
 Extend `Agent` class from random wandering to a proper task lifecycle:
-- [ ] States: `IDLE` → `TO_PICKUP` → `AT_PICKUP` (brief 0.5s pause) → `TO_DROPOFF` → `AT_DROPOFF` (brief pause) → `IDLE`
-- [ ] When `IDLE`: robot wanders exactly like current behavior (preserves existing feel)
-- [ ] When carrying a bag: draw a small dot/square orbiting the robot, slightly warmer glow
-- [ ] Smooth steering toward target zone using existing velocity-smoothing approach (no need for full pathfinding)
+- [x] States: `IDLE` → `TO_PICKUP` → `AT_PICKUP` (brief 0.5s pause) → `TO_DROPOFF` → `AT_DROPOFF` (brief pause) → `IDLE`
+- [x] When `IDLE`: robot wanders exactly like current behavior (preserves existing feel)
+- [x] When carrying a bag: draw a small dot/square orbiting the robot, slightly warmer glow
+- [x] Smooth steering toward target zone using existing velocity-smoothing approach (no need for full pathfinding)
 
 #### 8d. Task dispatcher (fleet scheduler)
-- [ ] When a bag spawns unassigned AND an idle robot exists: assign nearest idle robot
-- [ ] Assignment is greedy (nearest-first) — explicitly mirrors the research problem statement
+- [x] When a bag spawns unassigned AND an idle robot exists: assign nearest idle robot
+- [x] Assignment is greedy (nearest-first) — explicitly mirrors the research problem statement
       (can mention in a caption: "Greedy baseline — the research replaces this with GNN-based prediction")
-- [ ] If all robots are busy, bags queue at pickup zones waiting for a robot to free up
+- [x] If all robots are busy, bags queue at pickup zones waiting for a robot to free up
 
 #### 8e. Interactivity — click to route a bag
-- [ ] Hovering a dropoff zone: cursor changes, zone pulses with a label "Click to route a bag here"
-- [ ] Clicking a dropoff zone: spawns a bag at a random pickup zone, assigns it to that specific gate
-- [ ] Brief visual feedback on click: zone flashes cyan, a new bag appears at the pickup zone and
+- [x] Hovering a dropoff zone: cursor changes, zone pulses with a label "Click to route a bag here"
+- [x] Clicking a dropoff zone: spawns a bag at a random pickup zone, assigns it to that specific gate
+- [x] Brief visual feedback on click: zone flashes cyan, a new bag appears at the pickup zone and
       a robot immediately heads for it
-- [ ] Tooltip/hint text somewhere on the canvas: "Click a gate to dispatch a bag"
+- [x] Tooltip/hint text somewhere on the canvas: "Click a gate to dispatch a bag"
 
 #### 8f. HUD / status display
-- [ ] Small monospace status overlay in one corner (matching site font):
+- [x] Small monospace status overlay in one corner (matching site font):
       "12 bags delivered · 3 in transit · 2 waiting"
-- [ ] Counters increment live as robots complete deliveries
-- [ ] Optional: a "fleet efficiency" percentage that climbs as deliveries complete
+- [x] Counters increment live as robots complete deliveries
+- [x] Optional: a "fleet efficiency" percentage that climbs as deliveries complete
       (purely cosmetic but gives the viewer a sense of system performance)
 
 #### 8g. Section wrapper in HTML/CSS
-- [ ] New `<section id="demo">` added to nav and page
-- [ ] Section header: small label "Live Demo", headline something like
+- [x] New `<section id="demo">` added to nav and page
+- [x] Section header: small label "Live Demo", headline something like
       "Fleet coordination — watch it work." with a one-liner explaining what's happening
-- [ ] Canvas fills the section (fixed height, ~500–600px, full width)
-- [ ] Below canvas: brief caption explaining the research connection
-      ("Each robot uses local sensing only. No central controller. No communication between agents.")
+- [x] Canvas fills the section (fixed height, ~500–600px, full width)
+- [x] Below canvas: brief caption explaining the research connection
+      ("Each robot uses local sensing only. No central controller. No communication between agents.")      
 
 #### 8h. Out of scope for v1 (note for future)
 - Charging stations (robots deplete energy and must recharge before next task)
 - Plane arrivals / departures (burst event triggering a surge of bags at a pickup zone)
 - Multiple bag priorities (urgent bags jump the queue)
 - Pathfinding around obstacles (currently straight-line steering is fine)
+
+#### bugs found:
+- It seems the bags spawn has a limit, as even if i set the spawner to be every 0,00001s it still does not fill up with bags that quick. There must be some kind of cap or bug in the spawning logic that prevents too many bags from appearing, which is good for performance but worth checking.
+- If there is any kind of limits that can be hit, then we need to change the number in the UI drawer. Lets say there is a limit of bags per second of 0.1s, and i set it to 0.00001s, the UI should jump to 0.1s or show some kind of warning that the spawn rate is too high and has been capped.
 
 ---
 
