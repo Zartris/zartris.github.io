@@ -4,7 +4,7 @@
    zone layout, agent state machines,
    bag spawning, dispatcher, HUD overlay,
    and gate-click interaction.
-   v3 — HUD + gate interaction (complete)
+   v4 — waiting zone + draggable zones
 ───────────────────────────────────── */
 (function () {
   const canvas = document.getElementById('demoCanvas');
@@ -54,9 +54,10 @@
 
     Demo.drawEdges(ctx, agents);
     agents.forEach(a => { a.update(agents); a.draw(ctx); });
+    Demo.drawWaitingZone(ctx);
     Demo.drawZones(ctx);
     Demo.drawBags(ctx);
-    Demo.drawHud(ctx, W);   // ← add this line
+    Demo.drawHud(ctx, W);
 
     requestAnimationFrame(loop);
   }
