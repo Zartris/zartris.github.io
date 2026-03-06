@@ -1,7 +1,10 @@
 /* ─────────────────────────────────────
    DEMO — MAIN LOOP
-   Incrementally built.
-   v3 — HUD + gate interaction
+   Drives the bag-dispatch simulation:
+   zone layout, agent state machines,
+   bag spawning, dispatcher, HUD overlay,
+   and gate-click interaction.
+   v3 — HUD + gate interaction (complete)
 ───────────────────────────────────── */
 (function () {
   const canvas = document.getElementById('demoCanvas');
