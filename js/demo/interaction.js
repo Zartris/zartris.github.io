@@ -70,7 +70,6 @@ Demo.initInteraction = function (canvas, spawner) {
       if (hasDragged) {
         dragZone.x = pos.x;
         dragZone.y = pos.y;
-        canvas.style.cursor = 'grabbing';
         // Update fractional position so resize re-resolves correctly
         dragZone.xf = pos.x / canvas.width;
         dragZone.yf = pos.y / canvas.height;
@@ -84,7 +83,8 @@ Demo.initInteraction = function (canvas, spawner) {
       z.hovered = hitZone(z, pos);
       if (z.hovered) anyHovered = true;
     });
-    canvas.style.cursor = anyHovered ? 'pointer' : 'default';
+    // Use the site's custom cursor hover class (same as links/buttons in main.js)
+    document.body.classList.toggle('cursor-hover', anyHovered);
   });
 
   canvas.addEventListener('mouseup', function (e) {
@@ -102,13 +102,13 @@ Demo.initInteraction = function (canvas, spawner) {
     dragStartPos = null;
     hasDragged   = false;
 
-    // Re-check hover so cursor doesn't flicker to default if still over a gate
+    // Re-check hover so cursor state is correct if still over a gate
     let anyHovered = false;
     Demo.dropoffZones.forEach(function (z) {
       z.hovered = hitZone(z, pos);
       if (z.hovered) anyHovered = true;
     });
-    canvas.style.cursor = anyHovered ? 'pointer' : 'default';
+    document.body.classList.toggle('cursor-hover', anyHovered);
   });
 
   canvas.addEventListener('mouseleave', function () {
@@ -117,6 +117,6 @@ Demo.initInteraction = function (canvas, spawner) {
     dragZone     = null;
     dragStartPos = null;
     hasDragged   = false;
-    canvas.style.cursor = 'default';
+    document.body.classList.remove('cursor-hover');
   });
 };
