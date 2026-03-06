@@ -36,7 +36,7 @@ Demo.initSettings = function (containerEl) {
   drawer.className = 'demo-settings';
   drawer.id = 'demoSettings';
   drawer.innerHTML = `
-    <button class="demo-settings-tab" id="demoSettingsTab" aria-label="Toggle settings">&#10095;</button>
+    <button class="demo-settings-tab" id="demoSettingsTab" aria-label="Toggle settings">&gt;&gt;</button>
     <div class="demo-settings-panel">
       <p class="demo-settings-title">Settings</p>
 
@@ -58,7 +58,7 @@ Demo.initSettings = function (containerEl) {
       </label>
 
       <label class="demo-settings-row">
-        <span class="demo-settings-label">Edge dist <span class="demo-settings-val" id="val-edgeDist">175</span></span>
+        <span class="demo-settings-label">Comm. range <span class="demo-settings-val" id="val-edgeDist">175</span></span>
         <input type="range" id="set-edgeDist" min="50" max="300" step="10" value="175">
       </label>
 
@@ -109,20 +109,58 @@ Demo.initSettings = function (containerEl) {
   containerEl.appendChild(drawer);
 
   // --- Tab toggle ---
-  const tab = drawer.querySelector('#demoSettingsTab');
+  const tab   = drawer.querySelector('#demoSettingsTab');
+  const panel = drawer.querySelector('.demo-settings-panel');
+  // Start closed — panel is inert so hidden inputs can't steal keyboard focus
+  panel.inert = true;
   tab.addEventListener('click', function () {
     const isOpen = drawer.classList.toggle('open');
-    tab.textContent = isOpen ? '\u276E' : '\u276F';
+    tab.textContent = isOpen ? '<<' : '>>';
+    panel.inert = !isOpen;
   });
 
   // --- Slider helpers ---
   function bindSlider(id, key, fmt, reinit) {
     const input = drawer.querySelector('#set-' + id);
     const val   = drawer.querySelector('#val-' + id);
+
     input.addEventListener('input', function () {
       Demo.Settings[key] = parseFloat(this.value);
       val.textContent = fmt(parseFloat(this.value));
       if (reinit) Demo.Settings._reinitNeeded = true;
+    });
+
+    // Click the value label to type any number (can exceed slider range)
+    val.title = 'Click to type a custom value';
+    val.addEventListener('click', function (e) {
+      e.preventDefault();
+      const ed = document.createElement('input');
+      ed.type      = 'number';
+      ed.value     = Demo.Settings[key];
+      ed.className = 'demo-settings-val-edit';
+      val.replaceWith(ed);
+      ed.focus();
+      ed.select();
+
+      function commit() {
+        const n = parseFloat(ed.value);
+        if (!isNaN(n)) {
+          Demo.Settings[key] = n;
+          // Nudge slider to its nearest in-range position
+          input.value = Math.min(Math.max(n, parseFloat(input.min)), parseFloat(input.max));
+          val.textContent = fmt(n);
+          if (reinit) Demo.Settings._reinitNeeded = true;
+        } else {
+          val.textContent = fmt(Demo.Settings[key]);
+        }
+        ed.replaceWith(val);
+      }
+
+      ed.addEventListener('blur', commit);
+      ed.addEventListener('keydown', function (ev) {
+        if (ev.key === 'Enter')  { ev.preventDefault(); commit(); }
+        if (ev.key === 'Escape') { ed.replaceWith(val); }
+      });
     });
   }
 
@@ -153,9 +191,7 @@ Demo.initSettings = function (containerEl) {
   bindSlider('spawnInterval',   'spawnInterval',   v => v + 's', false);
   bindSlider('maxBagsPerZone',  'maxBagsPerZone',  v => v,       false);
 
-  // Dispatcher
-  bindToggle('dispatchMode', 'dispatchMode', ['Greedy', 'Random'],  false);
-  // Initialise dispatchMode toggle label correctly
+  // Dispatcher — use a dedicated listener (not bindToggle) so the value stays a string
   const dm = drawer.querySelector('#set-dispatchMode');
   dm.addEventListener('click', function () {
     // Override: value is a string, not boolean

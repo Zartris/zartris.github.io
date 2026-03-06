@@ -46,11 +46,30 @@ Demo.buildZones = function () {
   const n = Demo.Settings ? Demo.Settings.arrivalCount : 3;
   const g = Demo.Settings ? Demo.Settings.gateCount    : 4;
 
-  Demo.pickupZones = PICKUP_PRESETS.slice(0, n).map(function (p) {
-    return { id: p.id, label: p.label, xf: p.xf, yf: p.yf, bags: [], hovered: false };
+  Demo.pickupZones = Array.from({ length: n }, function (_, i) {
+    if (i < PICKUP_PRESETS.length) {
+      const p = PICKUP_PRESETS[i];
+      return { id: p.id, label: p.label, xf: p.xf, yf: p.yf, bags: [], hovered: false };
+    }
+    // Extra arrivals: evenly spaced on an outer ellipse
+    const angle = (2 * Math.PI * i / n) - Math.PI / 2;
+    const xf = Math.max(0.06, Math.min(0.94, 0.5 + 0.40 * Math.cos(angle)));
+    const yf = Math.max(0.06, Math.min(0.94, 0.5 + 0.38 * Math.sin(angle)));
+    const id  = String.fromCharCode(65 + i);
+    return { id: id, label: 'Arrival ' + id, xf: xf, yf: yf, bags: [], hovered: false };
   });
-  Demo.dropoffZones = GATE_PRESETS.slice(0, g).map(function (p) {
-    return { id: p.id, label: p.label, xf: p.xf, yf: p.yf, hovered: false };
+
+  Demo.dropoffZones = Array.from({ length: g }, function (_, i) {
+    if (i < GATE_PRESETS.length) {
+      const p = GATE_PRESETS[i];
+      return { id: p.id, label: p.label, xf: p.xf, yf: p.yf, hovered: false };
+    }
+    // Extra gates: evenly spaced on an inner ellipse
+    const angle = (2 * Math.PI * i / g) - Math.PI / 2;
+    const xf = Math.max(0.10, Math.min(0.90, 0.5 + 0.25 * Math.cos(angle)));
+    const yf = Math.max(0.10, Math.min(0.90, 0.5 + 0.30 * Math.sin(angle)));
+    const id  = i + 1;
+    return { id: id, label: 'Gate ' + id, xf: xf, yf: yf, hovered: false };
   });
 };
 

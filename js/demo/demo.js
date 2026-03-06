@@ -39,10 +39,12 @@
     Demo.dispatcher.agents = agents;
 
     // Reset timestamp and stats on resize
-    lastTs               = null;
-    Demo.stats.delivered = 0;
-    Demo.stats.inTransit = 0;
-    Demo.stats.waiting   = 0;
+    lastTs                      = null;
+    Demo.stats.delivered        = 0;
+    Demo.stats.inTransit        = 0;
+    Demo.stats.waiting          = 0;
+    Demo.stats.deliveryTimes    = [];
+    Demo.stats._startTime       = performance.now();
 
     // Spawner is created once — preserving it across resizes keeps the
     // spawn cadence continuous rather than resetting to a fresh interval.
@@ -53,9 +55,10 @@
   }
 
   function loop(ts) {
-    if (Demo.Settings._reinitNeeded) {
+    if (Demo.Settings && Demo.Settings._reinitNeeded) {
       Demo.Settings._reinitNeeded = false;
       init();
+      requestAnimationFrame(loop);
       return; // skip this frame, next frame starts fresh
     }
 

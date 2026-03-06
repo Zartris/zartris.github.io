@@ -105,6 +105,7 @@ Demo.DemoAgent = class {
         if (Demo.stats) {
           Demo.stats.delivered++;
           Demo.stats.inTransit = Math.max(0, Demo.stats.inTransit - 1);
+          if (Demo.stats.deliveryTimes) Demo.stats.deliveryTimes.push(performance.now());
         }
         this.state            = Demo.STATE.IDLE;
         this.targetZone       = null;
@@ -226,4 +227,4 @@ Demo.drawEdges = function (ctx, agents) {
 };
 
 // Shared stats — written by agents, read by hud.js later
-Demo.stats = { delivered: 0, inTransit: 0, waiting: 0 };
+Demo.stats = { delivered: 0, inTransit: 0, waiting: 0, deliveryTimes: [], _startTime: performance.now() };
