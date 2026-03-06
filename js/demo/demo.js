@@ -1,7 +1,7 @@
 /* ─────────────────────────────────────
    DEMO — MAIN LOOP
    Incrementally built.
-   v2 — bags spawning + dispatcher
+   v3 — HUD + gate interaction
 ───────────────────────────────────── */
 (function () {
   const canvas = document.getElementById('demoCanvas');
@@ -35,6 +35,7 @@
     // spawn cadence continuous rather than resetting to a fresh interval.
     if (!spawner) {
       spawner = new Demo.BagSpawner();
+      Demo.initInteraction(canvas, spawner);
     }
   }
 
@@ -51,6 +52,7 @@
     agents.forEach(a => { a.update(agents); a.draw(ctx); });
     Demo.drawZones(ctx);
     Demo.drawBags(ctx);
+    Demo.drawHud(ctx, W);   // ← add this line
 
     requestAnimationFrame(loop);
   }
