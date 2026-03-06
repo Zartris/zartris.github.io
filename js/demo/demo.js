@@ -17,6 +17,9 @@
     H = canvas.height = canvas.offsetHeight || 550;
     Demo.resolveZonePositions(W, H);
     agents = Array.from({ length: NUM_AGENTS }, () => new Demo.DemoAgent(W, H));
+    Demo.stats.delivered = 0;
+    Demo.stats.inTransit = 0;
+    Demo.stats.waiting   = 0;
   }
 
   function loop() {

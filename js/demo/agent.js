@@ -65,10 +65,13 @@ Demo.DemoAgent = class {
 
     } else if (this.state === Demo.STATE.TO_PICKUP ||
                this.state === Demo.STATE.TO_DROPOFF) {
+      if (!this.targetZone) { this.state = Demo.STATE.IDLE; return; }
       const z  = this.targetZone;
       const dx = z.x - this.x, dy = z.y - this.y;
       const d  = Math.hypot(dx, dy);
       if (d < Demo.ZONE_RADIUS * 0.6) {
+        this.vx = 0;
+        this.vy = 0;
         this.dwellStart = performance.now();
         this.state = this.state === Demo.STATE.TO_PICKUP
           ? Demo.STATE.AT_PICKUP
@@ -140,6 +143,7 @@ Demo.DemoAgent = class {
   }
 
   draw(ctx) {
+    ctx.save();
     // Trail
     if (this.trail.length > 1) {
       ctx.beginPath();
@@ -185,6 +189,7 @@ Demo.DemoAgent = class {
       ctx.fillStyle = 'rgba(255,255,255,0.7)';
       ctx.fill();
     }
+    ctx.restore();
   }
 };
 
