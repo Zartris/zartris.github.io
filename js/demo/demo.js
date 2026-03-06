@@ -18,6 +18,12 @@
   let lastTs  = null;
 
   function init() {
+    // Initialise settings drawer on first run
+    if (!Demo.initSettings._drawerBuilt) {
+      Demo.initSettings(canvas.parentElement);
+      Demo.initSettings._drawerBuilt = true;
+    }
+
     W = canvas.width  = canvas.offsetWidth  || 900;
     H = canvas.height = canvas.offsetHeight || 550;
     // Clear zone queues so in-flight bags from dead agents don't linger
