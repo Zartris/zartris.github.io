@@ -71,9 +71,12 @@ Demo.drawBags = function (ctx) {
       // not just until it is assigned. DELIVERED bags are already removed from
       // the array by agent.js bags.shift(), so no need to check for that state.
       if (bag.state !== 'WAITING' && bag.state !== 'IN_TRANSIT') return;
-      // Offset multiple waiting bags above the zone
-      const bx = zone.x + (i - 1) * 12;
-      const by = zone.y - Demo.ZONE_RADIUS - 10;
+      // Layout: max 4 per row, rows grow upward, each row centred on the zone
+      const col        = i % 4;
+      const row        = Math.floor(i / 4);
+      const itemsInRow = Math.min(4, zone.bags.length - row * 4);
+      const bx = zone.x + (col - (itemsInRow - 1) / 2) * 12;
+      const by = zone.y - Demo.ZONE_RADIUS - 10 - row * 14;
 
       // Dim the icon once a robot has been assigned (IN_TRANSIT)
       const assigned = bag.state === 'IN_TRANSIT';
