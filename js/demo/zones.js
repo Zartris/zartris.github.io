@@ -23,6 +23,9 @@ Demo.dropoffZones = [
   { id: 4, label: 'Gate 4', xf: 0.65, yf: 0.88, hovered: false },
 ];
 
+// Central standby area — idle robots congregate here
+Demo.waitingZone = { xf: 0.50, yf: 0.50, x: 0, y: 0, radius: 70 };
+
 // Call after canvas resize to convert fractions to pixels
 Demo.resolveZonePositions = function (W, H) {
   Demo.pickupZones.forEach(z => {
@@ -35,6 +38,9 @@ Demo.resolveZonePositions = function (W, H) {
     z.y = z.yf * H;
     z.hovered = false;
   });
+  const wz = Demo.waitingZone;
+  wz.x = wz.xf * W;
+  wz.y = wz.yf * H;
 };
 
 Demo.drawZones = function (ctx) {
@@ -92,4 +98,26 @@ Demo.drawZones = function (ctx) {
     ctx.fillText(z.label, z.x, z.y + 18);
     ctx.restore();
   });
+};
+
+Demo.drawWaitingZone = function (ctx) {
+  const wz = Demo.waitingZone;
+  if (!wz.x) return; // not yet resolved
+
+  ctx.save();
+  ctx.strokeStyle  = 'rgba(0,212,255,0.18)';
+  ctx.lineWidth    = 1;
+  ctx.setLineDash([3, 6]);
+  ctx.shadowBlur   = 0;
+  ctx.beginPath();
+  ctx.arc(wz.x, wz.y, wz.radius, 0, Math.PI * 2);
+  ctx.stroke();
+  ctx.setLineDash([]);
+
+  ctx.fillStyle    = 'rgba(0,212,255,0.18)';
+  ctx.font         = '9px "Space Mono", monospace';
+  ctx.textAlign    = 'center';
+  ctx.textBaseline = 'middle';
+  ctx.fillText('Standby', wz.x, wz.y);
+  ctx.restore();
 };

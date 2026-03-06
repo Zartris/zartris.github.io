@@ -39,8 +39,18 @@ Demo.DemoAgent = class {
   }
 
   _setWanderTarget() {
-    this.tx = 60 + Math.random() * (this.W - 120);
-    this.ty = 60 + Math.random() * (this.H - 120);
+    const wz = Demo.waitingZone;
+    if (!wz || !wz.x) {
+      // Fallback: waiting zone not resolved yet, wander freely
+      this.tx = 60 + Math.random() * (this.W - 120);
+      this.ty = 60 + Math.random() * (this.H - 120);
+      return;
+    }
+    // Pick a random point within the waiting zone radius
+    const angle = Math.random() * Math.PI * 2;
+    const dist  = Math.random() * wz.radius * 0.85;
+    this.tx = wz.x + Math.cos(angle) * dist;
+    this.ty = wz.y + Math.sin(angle) * dist;
   }
 
   get isIdle() {
