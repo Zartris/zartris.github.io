@@ -277,6 +277,7 @@ Extend `Agent` class from random wandering to a proper task lifecycle:
 #### bugs found:
 - It seems the bags spawn has a limit, as even if i set the spawner to be every 0,00001s it still does not fill up with bags that quick. There must be some kind of cap or bug in the spawning logic that prevents too many bags from appearing, which is good for performance but worth checking.
 - If there is any kind of limits that can be hit, then we need to change the number in the UI drawer. Lets say there is a limit of bags per second of 0.1s, and i set it to 0.00001s, the UI should jump to 0.1s or show some kind of warning that the spawn rate is too high and has been capped.
+- When putting in new agents numbers, pickup or dropoff zones, the layout resets, so if the user has rearranged the zones or placed them in specific locations, those changes are lost. We should preserve the layout and just add/remove agents or zones without resetting everything.
 
 ---
 
