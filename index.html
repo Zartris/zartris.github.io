@@ -683,16 +683,5 @@
   <script src="js/simulation.js"></script>
   <script src="js/main.js"></script>
   <script src="js/demo/zones.js"></script>
-  <script>
-(function(){
-  var canvas = document.getElementById('demoCanvas');
-  if (!canvas) return;
-  var ctx = canvas.getContext('2d');
-  canvas.width  = canvas.offsetWidth  || 800;
-  canvas.height = canvas.offsetHeight || 550;
-  Demo.resolveZonePositions(canvas.width, canvas.height);
-  Demo.drawZones(ctx);
-})();
-  </script>
 </body>
 </html>
