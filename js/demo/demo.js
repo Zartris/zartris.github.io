@@ -17,6 +17,10 @@
   function init() {
     W = canvas.width  = canvas.offsetWidth  || 900;
     H = canvas.height = canvas.offsetHeight || 550;
+    // Clear zone queues so in-flight bags from dead agents don't linger
+    if (Demo.pickupZones) {
+      Demo.pickupZones.forEach(z => { z.bags = []; });
+    }
     Demo.resolveZonePositions(W, H);
 
     agents = Array.from({ length: NUM_AGENTS }, () => new Demo.DemoAgent(W, H));
@@ -27,6 +31,8 @@
     Demo.stats.inTransit = 0;
     Demo.stats.waiting   = 0;
 
+    // Spawner is created once — preserving it across resizes keeps the
+    // spawn cadence continuous rather than resetting to a fresh interval.
     if (!spawner) {
       spawner = new Demo.BagSpawner();
     }
@@ -38,7 +44,7 @@
 
     ctx.clearRect(0, 0, W, H);
 
-    spawner.update(dt);
+    if (spawner) spawner.update(dt);
     Demo.dispatcher.tick();
 
     Demo.drawEdges(ctx, agents);
