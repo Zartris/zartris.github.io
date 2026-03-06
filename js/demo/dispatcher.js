@@ -14,16 +14,23 @@ Demo.dispatcher = {
     const idle = this.agents.filter(a => a.isIdle);
     if (idle.length === 0) return;
 
-    let nearest = null, bestDist = Infinity;
-    for (const a of idle) {
-      const d = Math.hypot(a.x - bag.pickup.x, a.y - bag.pickup.y);
-      if (d < bestDist) { bestDist = d; nearest = a; }
+    let chosen;
+    const mode = Demo.Settings ? Demo.Settings.dispatchMode : 'greedy';
+    if (mode === 'random') {
+      chosen = idle[Math.floor(Math.random() * idle.length)];
+    } else {
+      // Greedy: nearest to pickup zone
+      let bestDist = Infinity;
+      for (const a of idle) {
+        const d = Math.hypot(a.x - bag.pickup.x, a.y - bag.pickup.y);
+        if (d < bestDist) { bestDist = d; chosen = a; }
+      }
     }
-    if (!nearest) return;
+    if (!chosen) return;
 
     bag.state = 'IN_TRANSIT';
     Demo.stats.waiting = Math.max(0, Demo.stats.waiting - 1);
-    nearest.assignPickup(bag.pickup, bag.dropoff);
+    chosen.assignPickup(bag.pickup, bag.dropoff);
   },
 
   // Retry unassigned waiting bags each frame (agent may have freed up)

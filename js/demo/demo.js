@@ -18,6 +18,8 @@
   let lastTs  = null;
 
   function init() {
+    Demo.buildZones();
+
     // Initialise settings drawer on first run
     if (!Demo.initSettings._drawerBuilt) {
       Demo.initSettings(canvas.parentElement);
@@ -32,7 +34,8 @@
     }
     Demo.resolveZonePositions(W, H);
 
-    agents = Array.from({ length: NUM_AGENTS }, () => new Demo.DemoAgent(W, H));
+    const numAgents = Demo.Settings ? Demo.Settings.agentCount : NUM_AGENTS;
+    agents = Array.from({ length: numAgents }, () => new Demo.DemoAgent(W, H));
     Demo.dispatcher.agents = agents;
 
     // Reset timestamp and stats on resize
@@ -50,6 +53,12 @@
   }
 
   function loop(ts) {
+    if (Demo.Settings._reinitNeeded) {
+      Demo.Settings._reinitNeeded = false;
+      init();
+      return; // skip this frame, next frame starts fresh
+    }
+
     const dt = lastTs ? ts - lastTs : 16;
     lastTs = ts;
 
@@ -60,7 +69,7 @@
 
     Demo.drawEdges(ctx, agents);
     agents.forEach(a => { a.update(agents); a.draw(ctx); });
-    Demo.drawWaitingZone(ctx);
+    if (!Demo.Settings || Demo.Settings.showWaitingZone) Demo.drawWaitingZone(ctx);
     Demo.drawZones(ctx);
     Demo.drawBags(ctx);
     Demo.drawHud(ctx, W);

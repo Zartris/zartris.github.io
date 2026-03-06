@@ -26,6 +26,34 @@ Demo.dropoffZones = [
 // Central standby area — idle robots congregate here
 Demo.waitingZone = { xf: 0.50, yf: 0.50, x: 0, y: 0, radius: 70, resolved: false };
 
+Demo.buildZones = function () {
+  const PICKUP_PRESETS = [
+    { id: 'A', label: 'Arrival A', xf: 0.10, yf: 0.20 },
+    { id: 'B', label: 'Arrival B', xf: 0.10, yf: 0.75 },
+    { id: 'C', label: 'Arrival C', xf: 0.88, yf: 0.50 },
+    { id: 'D', label: 'Arrival D', xf: 0.50, yf: 0.08 },
+    { id: 'E', label: 'Arrival E', xf: 0.50, yf: 0.92 },
+  ];
+  const GATE_PRESETS = [
+    { id: 1, label: 'Gate 1', xf: 0.30, yf: 0.12 },
+    { id: 2, label: 'Gate 2', xf: 0.65, yf: 0.12 },
+    { id: 3, label: 'Gate 3', xf: 0.30, yf: 0.88 },
+    { id: 4, label: 'Gate 4', xf: 0.65, yf: 0.88 },
+    { id: 5, label: 'Gate 5', xf: 0.48, yf: 0.50 },
+    { id: 6, label: 'Gate 6', xf: 0.80, yf: 0.50 },
+  ];
+
+  const n = Demo.Settings ? Demo.Settings.arrivalCount : 3;
+  const g = Demo.Settings ? Demo.Settings.gateCount    : 4;
+
+  Demo.pickupZones = PICKUP_PRESETS.slice(0, n).map(function (p) {
+    return { id: p.id, label: p.label, xf: p.xf, yf: p.yf, bags: [], hovered: false };
+  });
+  Demo.dropoffZones = GATE_PRESETS.slice(0, g).map(function (p) {
+    return { id: p.id, label: p.label, xf: p.xf, yf: p.yf, hovered: false };
+  });
+};
+
 // Call after canvas resize to convert fractions to pixels
 Demo.resolveZonePositions = function (W, H) {
   Demo.pickupZones.forEach(z => {
@@ -60,16 +88,18 @@ Demo.drawZones = function (ctx) {
     ctx.stroke();
     ctx.setLineDash([]);
 
-    // Chevron symbol
-    ctx.fillStyle = 'rgba(0,212,255,0.7)';
-    ctx.font = '11px "Space Mono", monospace';
-    ctx.textAlign = 'center';
-    ctx.fillText('»', z.x, z.y - 4);
+    if (!Demo.Settings || Demo.Settings.showLabels) {
+      // Chevron symbol
+      ctx.fillStyle = 'rgba(0,212,255,0.7)';
+      ctx.font = '11px "Space Mono", monospace';
+      ctx.textAlign = 'center';
+      ctx.fillText('»', z.x, z.y - 4);
 
-    // Label
-    ctx.fillStyle = 'rgba(0,212,255,0.5)';
-    ctx.font = '9px "Space Mono", monospace';
-    ctx.fillText(z.label, z.x, z.y + 14);
+      // Label
+      ctx.fillStyle = 'rgba(0,212,255,0.5)';
+      ctx.font = '9px "Space Mono", monospace';
+      ctx.fillText(z.label, z.x, z.y + 14);
+    }
     ctx.restore();
   });
 
@@ -87,16 +117,18 @@ Demo.drawZones = function (ctx) {
     ctx.stroke();
     ctx.shadowBlur = 0;
 
-    // Gate number
-    ctx.fillStyle = `rgba(0,212,255,${glow})`;
-    ctx.font = `bold 13px "Space Mono", monospace`;
-    ctx.textAlign = 'center';
-    ctx.fillText(z.id, z.x, z.y + 5);
+    if (!Demo.Settings || Demo.Settings.showLabels) {
+      // Gate number
+      ctx.fillStyle = `rgba(0,212,255,${glow})`;
+      ctx.font = `bold 13px "Space Mono", monospace`;
+      ctx.textAlign = 'center';
+      ctx.fillText(z.id, z.x, z.y + 5);
 
-    // Label
-    ctx.fillStyle = `rgba(0,212,255,${glow * 0.75})`;
-    ctx.font = '9px "Space Mono", monospace';
-    ctx.fillText(z.label, z.x, z.y + 18);
+      // Label
+      ctx.fillStyle = `rgba(0,212,255,${glow * 0.75})`;
+      ctx.font = '9px "Space Mono", monospace';
+      ctx.fillText(z.label, z.x, z.y + 18);
+    }
     ctx.restore();
   });
 };

@@ -116,7 +116,8 @@ Demo.DemoAgent = class {
 
     // Record trail
     this.trail.push({ x: this.x, y: this.y });
-    if (this.trail.length > _TRAIL_LEN) this.trail.shift();
+    const maxTrail = (Demo.Settings ? Demo.Settings.trailLength : _TRAIL_LEN);
+    while (this.trail.length > maxTrail) this.trail.shift();
 
     this.x += this.vx;
     this.y += this.vy;
@@ -129,8 +130,9 @@ Demo.DemoAgent = class {
   }
 
   _applyForce(dx, dy, d, all) {
-    let fx = d > 0 ? (dx / d) * this.speed : 0;
-    let fy = d > 0 ? (dy / d) * this.speed : 0;
+    const speedMult = Demo.Settings ? Demo.Settings.agentSpeed : 1.0;
+    let fx = d > 0 ? (dx / d) * this.speed * speedMult : 0;
+    let fy = d > 0 ? (dy / d) * this.speed * speedMult : 0;
 
     for (const o of all) {
       if (o === this) continue;
@@ -146,9 +148,10 @@ Demo.DemoAgent = class {
     this.vx = this.vx * 0.82 + fx * 0.18;
     this.vy = this.vy * 0.82 + fy * 0.18;
     const sp = Math.hypot(this.vx, this.vy);
-    if (sp > this.speed * 1.6) {
-      this.vx = (this.vx / sp) * this.speed * 1.6;
-      this.vy = (this.vy / sp) * this.speed * 1.6;
+    const maxSpeed  = this.speed * 1.6 * speedMult;
+    if (sp > maxSpeed) {
+      this.vx = (this.vx / sp) * maxSpeed;
+      this.vy = (this.vy / sp) * maxSpeed;
     }
   }
 
@@ -204,12 +207,13 @@ Demo.DemoAgent = class {
 };
 
 Demo.drawEdges = function (ctx, agents) {
+  const edgeDist = Demo.Settings ? Demo.Settings.edgeDist : _EDGE_DIST;
   for (let i = 0; i < agents.length; i++) {
     for (let j = i + 1; j < agents.length; j++) {
       const a = agents[i], b = agents[j];
       const d = Math.hypot(a.x - b.x, a.y - b.y);
-      if (d < _EDGE_DIST) {
-        const t = 1 - d / _EDGE_DIST;
+      if (d < edgeDist) {
+        const t = 1 - d / edgeDist;
         ctx.beginPath();
         ctx.moveTo(a.x, a.y);
         ctx.lineTo(b.x, b.y);

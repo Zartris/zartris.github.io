@@ -21,7 +21,8 @@ Demo.BagSpawner = class {
   }
 
   _randomInterval() {
-    return 4000 + Math.random() * 2000; // 4–6 seconds
+    const base = Demo.Settings ? Demo.Settings.spawnInterval * 1000 : 5000;
+    return base + (Math.random() - 0.5) * 1000; // ±0.5s jitter
   }
 
   update(dt) {
@@ -34,9 +35,8 @@ Demo.BagSpawner = class {
   }
 
   _spawnBag(forcedDropoff) {
-    const available = Demo.pickupZones.filter(
-      z => z.bags.length < Demo.BAG_MAX_PER_ZONE
-    );
+    const cap = Demo.Settings ? Demo.Settings.maxBagsPerZone : Demo.BAG_MAX_PER_ZONE;
+    const available = Demo.pickupZones.filter(z => z.bags.length < cap);
     if (available.length === 0) return null;
 
     const pickup  = available[Math.floor(Math.random() * available.length)];
