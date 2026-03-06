@@ -29,7 +29,8 @@
     agents = Array.from({ length: NUM_AGENTS }, () => new Demo.DemoAgent(W, H));
     Demo.dispatcher.agents = agents;
 
-    // Reset stats and spawner on resize
+    // Reset timestamp and stats on resize
+    lastTs               = null;
     Demo.stats.delivered = 0;
     Demo.stats.inTransit = 0;
     Demo.stats.waiting   = 0;
