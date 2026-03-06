@@ -6,6 +6,9 @@
 window.Demo = window.Demo || {};
 
 Demo.initInteraction = function (canvas, spawner) {
+  if (Demo.initInteraction._done) return;
+  Demo.initInteraction._done = true;
+
   const r = Demo.ZONE_RADIUS;
 
   function canvasPos(e) {
@@ -24,6 +27,7 @@ Demo.initInteraction = function (canvas, spawner) {
   }
 
   canvas.addEventListener('mousemove', function (e) {
+    if (!Demo.dropoffZones || !Demo.dropoffZones.length) return;
     const pos       = canvasPos(e);
     let   anyHovered = false;
     Demo.dropoffZones.forEach(function (z) {
@@ -34,11 +38,13 @@ Demo.initInteraction = function (canvas, spawner) {
   });
 
   canvas.addEventListener('mouseleave', function () {
+    if (!Demo.dropoffZones || !Demo.dropoffZones.length) return;
     Demo.dropoffZones.forEach(function (z) { z.hovered = false; });
     canvas.style.cursor = 'default';
   });
 
   canvas.addEventListener('click', function (e) {
+    if (!Demo.dropoffZones || !Demo.dropoffZones.length) return;
     const pos = canvasPos(e);
     Demo.dropoffZones.forEach(function (z) {
       if (hitZone(z, pos)) spawner.spawnForGate(z);
